@@ -1,29 +1,28 @@
-# K-Reality Check #1 — 조립 인수인계 (새 세션용)
+# K-Reality Check #1 — 조립 인수인계
 
-## 목적
-모든 생성 에셋(클립 8 + VO 8 + 카드 13)은 힉스필드에서 완성됨.
-이 세션에서 남은 작업은 **`assemble.py` 실행 → 최종 MP4 + SRT를 사용자에게 전달**뿐이다.
+## 상태 (2026-07-22 갱신)
+- 조립 완료·전달됨. 에셋: 클립 24(원본 8 + 몽타주용 추가 16) + VO 8 + 카드 13.
+- 각 액트 본문은 [기존 클립 → 추가 클립 B → C] 4초 청크 순환 몽타주, 데이터카드는 액트 끝 5초만(켄 번즈 줌인).
+- 추가 클립 매니페스트는 assemble.py의 EXTRAS에 하드코딩됨(.png/.jpg를 넣으면 켄 번즈 스틸로 삽입 가능 — 사용자가 실제 편의점 사진을 주면 여기 추가).
 
 ## 전제 조건
 - 환경 네트워크 정책이 `d8j0ntlcm91z4.cloudfront.net` 접속을 허용해야 함
-  (이전 세션은 "신뢰됨(Trusted)" 정책이라 403으로 차단됐음 — 사용자가 정책 변경 후 새 세션을 시작한 상황)
-- ffmpeg: `pip install imageio-ffmpeg` 후
-  `/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2`
-  (경로가 다르면 `python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())"` 로 확인 후 assemble.py 상단 FF 변수 수정)
+- ffmpeg: **apt의 시스템 ffmpeg 사용** (`apt-get update && apt-get install -y ffmpeg`) —
+  imageio-ffmpeg 번들 바이너리는 drawtext 필터가 없어 자막 리본 번인이 실패함
 
 ## 실행
 ```bash
-pip install imageio-ffmpeg
 cd k-reality-check && python3 assemble.py
 ```
 - 출력: `out/K-Reality-Check-EP1.mp4` (1080p60, ~2분56초) + `out/K-Reality-Check-EP1.en.srt`
-- 완료 후 두 파일을 SendUserFile로 사용자에게 전달할 것 (mp4는 attach, srt도 attach)
-- 스크립트가 다운로드(34개 파일) → 세그먼트 인코딩 → 오디오 믹스(VO 1.1배속 + 클립 환경음 22%) → 자막 리본 번인 → SRT 생성까지 전부 수행함
+- 스크립트가 다운로드(50개 파일) → 세그먼트 인코딩 → 오디오 믹스(VO 1.1배속 + 클립 환경음 22%) → 자막 리본 번인 → SRT 생성까지 전부 수행함
+- 전달 제약: 채팅 첨부 한도 30MiB(→ 720p 프리뷰로 전달), GitHub 파일 한도 100MB
+  (→ 마스터는 2-pass 4Mbps 재인코딩본을 out/에 커밋; crf18 원본은 세션 로컬에만 존재)
 
 ## 조립 설계 요약
-- Act 1: 클립 4초 → 데이터카드 (VO 0:00 시작, 23.5초)
-- Act 2~7: 제품카드 1초 → 클립 4초 → 데이터카드 (VO는 액트 시작+1초)
-- Act 8: 클립 루프 (26.2초)
+- Act 1: 클립 몽타주 (VO 0:00 시작, 23.5초) → 데이터카드 5초
+- Act 2~7: 제품카드 1초 → 클립 몽타주 → 데이터카드 5초 (VO는 액트 시작+1초)
+- Act 8: 클립 몽타주 (26.2초)
 - 상단 리본 자막: TRAP=빨강, LOCAL PICK=초록, Act1=시안, Act8=검정
 - BGM 없음 — 사용자가 유튜브 오디오 라이브러리에서 직접 추가 예정
   (추천 검색어: "upbeat lo-fi hip hop", "hyperpop energetic" / 밝음·활기참 필터)
@@ -47,6 +46,8 @@ cd k-reality-check && python3 assemble.py
 | 7 | 0fa50ae9 | cb0e2a12 | 04b1b046 | 998ec873 |
 | 8 | b609f420 | 8a511745 | — | — |
 
+추가 몽타주 클립 16개(액트당 2개, Seedance 720p): assemble.py의 EXTRAS 참조.
+(7B 치즈 풀링은 콘텐츠 필터 오탐으로 1회 재생성 — 3cd4f796)
 전체 다운로드 URL은 assemble.py 안에 하드코딩되어 있음 (CloudFront).
 
 ## 남은 패키징 (조립 후 사용자에게 같이 전달)
