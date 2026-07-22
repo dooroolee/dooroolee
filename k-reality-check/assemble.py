@@ -42,7 +42,22 @@ DCARDS = {1:"hf_20260722_064356_c2f4b3f3-2a8d-4ff5-a9cd-9bfff54f0e70.png",
 
 # extra montage footage per act, cycled with the primary clip under the VO.
 # .mp4 entries are cut in as 4s chunks; .png/.jpg entries get a 4s Ken Burns pan.
-EXTRAS = {}
+EXTRAS = {
+ 1:["hf_20260722_072916_fc98b83b-a714-4ac7-b367-55202f21af7b.mp4",
+    "hf_20260722_072941_a982d52b-8003-448b-808a-6023d7c1515e.mp4"],
+ 2:["hf_20260722_072942_194f8b8e-e88b-47b2-9385-19cc3c9653f5.mp4",
+    "hf_20260722_072943_21d38021-8ba4-4e26-a967-1494678b0c5e.mp4"],
+ 3:["hf_20260722_072945_1a72b8b4-b8fe-4aa0-b7be-316c47b3829f.mp4",
+    "hf_20260722_072948_62a7d3ba-8fd9-4f71-afdb-ee385824a9c9.mp4"],
+ 4:["hf_20260722_073335_819cec96-25d4-4e9b-9ad0-60095ad04cf6.mp4",
+    "hf_20260722_073337_9780c1e4-63c6-430a-92f0-173c4d2ad249.mp4"],
+ 5:["hf_20260722_073338_0eefc5c6-58d4-4d60-a153-ad61a8d7f18e.mp4",
+    "hf_20260722_073340_33b59d17-a114-4c6b-bb8d-1d054518fc66.mp4"],
+ 6:["hf_20260722_073341_5d99953a-d2d1-4849-9394-dd1f667002be.mp4"],
+ 7:["hf_20260722_073623_12a7ac56-716c-41f9-9033-6cf067292703.mp4"],
+ 8:["hf_20260722_073624_b1ae0da8-a75f-4e76-9653-5a1254c3ce2f.mp4",
+    "hf_20260722_073625_41f7d7ca-3762-48dc-8384-f6729508ddb2.mp4"],
+}
 
 CAPTIONS = {1:("10,000+ REVIEWS ANALYZED","0x00B4D8"),
             2:("TRAP #1 | BANANA MILK ESPRESSO","0xE63946"),
