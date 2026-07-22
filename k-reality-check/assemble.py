@@ -119,7 +119,7 @@ vo_dur = {k: ffprobe_duration(os.path.join(A, f)) for k, f in VOS.items()}
 vo_s = {k: v/1.1 for k, v in vo_dur.items()}
 print("VO durations (1.1x):", {k: round(v,2) for k,v in vo_s.items()})
 
-TAIL = 0.6; PCARD_D = 1.0; CLIP_D = 4.0
+TAIL = 0.6; PCARD_D = 1.0; CLIP_D = 4.0; DCARD_D = 5.0
 acts, t = [], 0.0
 for k in range(1, 9):
     lead = PCARD_D if k in PCARDS else 0.0
@@ -141,19 +141,23 @@ for a in acts:
         p = os.path.join(SEG, f"a{k}_p.mp4")
         sh([FF, "-y", "-loop", "1", "-t", f"{PCARD_D:.3f}", "-i", os.path.join(A, PCARDS[k]),
             "-vf", f"{IMG_VF},{cap}", *ENC, p]); seglist.append(p)
+    # boomerang loop (forward+reverse) keeps footage moving under the whole VO
+    boo = os.path.join(SEG, f"a{k}_boo.mp4")
+    sh([FF, "-y", "-i", os.path.join(A, CLIPS[k]), "-filter_complex",
+        f"[0:v]{CLIP_VF},split[f][b];[b]reverse[r];[f][r]concat=n=2:v=1:a=0[v]",
+        "-map", "[v]", *ENC, boo])
     c = os.path.join(SEG, f"a{k}_c.mp4")
-    if k == 8:
-        loop_d = vo_s[k] + TAIL
-        sh([FF, "-y", "-stream_loop", "12", "-i", os.path.join(A, CLIPS[k]), "-t", f"{loop_d:.3f}",
-            "-vf", f"{CLIP_VF},{cap}", *ENC, c]); seglist.append(c)
-    else:
-        sh([FF, "-y", "-i", os.path.join(A, CLIPS[k]), "-t", f"{CLIP_D:.3f}",
-            "-vf", f"{CLIP_VF},{cap}", *ENC, c]); seglist.append(c)
+    loop_d = a["dur"] - a["lead"] - (DCARD_D if k in DCARDS else 0.0)
+    sh([FF, "-y", "-stream_loop", "-1", "-i", boo, "-t", f"{loop_d:.3f}",
+        "-vf", f"fps=60,{cap}", *ENC, c]); seglist.append(c)
     if k in DCARDS:
         d = os.path.join(SEG, f"a{k}_d.mp4")
-        dur = vo_s[k] - CLIP_D + TAIL
-        sh([FF, "-y", "-loop", "1", "-t", f"{dur:.3f}", "-i", os.path.join(A, DCARDS[k]),
-            "-vf", f"{IMG_VF},{cap}", *ENC, d]); seglist.append(d)
+        frames = int(DCARD_D * 60)
+        kb = (f"scale=2112:1188:force_original_aspect_ratio=increase,crop=2112:1188,"
+              f"zoompan=z='min(zoom+{0.1/frames:.6f},1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+              f"d={frames}:s=1920x1080:fps=60,setsar=1,format=yuv420p")
+        sh([FF, "-y", "-i", os.path.join(A, DCARDS[k]),
+            "-vf", f"{kb},{cap}", *ENC, d]); seglist.append(d)
     print(f"  act {k} segments done")
 
 concat_txt = os.path.join(SEG, "concat.txt")
@@ -177,9 +181,10 @@ for a in acts:
     k = a["act"]
     r = subprocess.run([FF, "-i", os.path.join(A, CLIPS[k])], capture_output=True, text=True)
     if "Audio:" not in r.stderr: continue
-    inputs += ["-i", os.path.join(A, CLIPS[k])]
+    inputs += ["-stream_loop", "-1", "-i", os.path.join(A, CLIPS[k])]
     ms = int((a["start"] + a["lead"]) * 1000)
-    fparts.append(f"[{idx}:a]volume=0.22,aformat=sample_rates=48000:channel_layouts=stereo,adelay={ms}|{ms}[c{k}]")
+    amb_d = a["dur"] - a["lead"] - (DCARD_D if k in DCARDS else 0.0)
+    fparts.append(f"[{idx}:a]atrim=0:{amb_d:.3f},volume=0.22,aformat=sample_rates=48000:channel_layouts=stereo,adelay={ms}|{ms}[c{k}]")
     mix.append(f"[c{k}]"); idx += 1
 fchain = ";".join(fparts) + f";{''.join(mix)}amix=inputs={len(mix)}:duration=longest:normalize=0,alimiter=limit=0.9,apad=whole_dur={TOTAL:.3f}[out]"
 audio = os.path.join(OUT, "audio.m4a")
