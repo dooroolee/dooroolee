@@ -3,7 +3,7 @@
 align 1.1x VO, burn act captions, encode 1080p60, emit SRT."""
 import os, subprocess, sys, json, urllib.request
 
-FF = "/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+FF = "/usr/bin/ffmpeg"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 A = os.path.join(ROOT, "assets"); SEG = os.path.join(ROOT, "seg"); OUT = os.path.join(ROOT, "out")
 for d in (A, SEG, OUT): os.makedirs(d, exist_ok=True)
