@@ -40,6 +40,10 @@ DCARDS = {1:"hf_20260722_064356_c2f4b3f3-2a8d-4ff5-a9cd-9bfff54f0e70.png",
           6:"hf_20260722_064407_69a37068-428a-4300-86c9-132d08430956.png",
           7:"hf_20260722_064409_998ec873-592a-44bf-8e14-4521dc320eca.png"}
 
+# extra montage footage per act, cycled with the primary clip under the VO.
+# .mp4 entries are cut in as 4s chunks; .png/.jpg entries get a 4s Ken Burns pan.
+EXTRAS = {}
+
 CAPTIONS = {1:("10,000+ REVIEWS ANALYZED","0x00B4D8"),
             2:("TRAP #1 | BANANA MILK ESPRESSO","0xE63946"),
             3:("TRAP #2 | RICE PAPER BULDAK ROLL","0xE63946"),
@@ -141,15 +145,24 @@ for a in acts:
         p = os.path.join(SEG, f"a{k}_p.mp4")
         sh([FF, "-y", "-loop", "1", "-t", f"{PCARD_D:.3f}", "-i", os.path.join(A, PCARDS[k]),
             "-vf", f"{IMG_VF},{cap}", *ENC, p]); seglist.append(p)
-    # boomerang loop (forward+reverse) keeps footage moving under the whole VO
-    boo = os.path.join(SEG, f"a{k}_boo.mp4")
-    sh([FF, "-y", "-i", os.path.join(A, CLIPS[k]), "-filter_complex",
-        f"[0:v]{CLIP_VF},split[f][b];[b]reverse[r];[f][r]concat=n=2:v=1:a=0[v]",
-        "-map", "[v]", *ENC, boo])
-    c = os.path.join(SEG, f"a{k}_c.mp4")
-    loop_d = a["dur"] - a["lead"] - (DCARD_D if k in DCARDS else 0.0)
-    sh([FF, "-y", "-stream_loop", "-1", "-i", boo, "-t", f"{loop_d:.3f}",
-        "-vf", f"fps=60,{cap}", *ENC, c]); seglist.append(c)
+    # montage: cycle primary clip + extras in 4s chunks so footage keeps moving under the VO
+    playlist = [CLIPS[k]] + EXTRAS.get(k, [])
+    body = a["dur"] - a["lead"] - (DCARD_D if k in DCARDS else 0.0)
+    left, i = body, 0
+    while left > 0.05:
+        src = os.path.join(A, playlist[i % len(playlist)])
+        d = min(CLIP_D, left)
+        c = os.path.join(SEG, f"a{k}_m{i}.mp4")
+        if src.lower().endswith((".png", ".jpg", ".jpeg")):
+            fr = max(int(d*60), 6)
+            kb = (f"scale=2112:1188:force_original_aspect_ratio=increase,crop=2112:1188,"
+                  f"zoompan=z='min(zoom+{0.1/fr:.6f},1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+                  f"d={fr}:s=1920x1080:fps=60,setsar=1,format=yuv420p")
+            sh([FF, "-y", "-i", src, "-vf", f"{kb},{cap}", *ENC, c])
+        else:
+            sh([FF, "-y", "-stream_loop", "-1", "-i", src, "-t", f"{d:.3f}",
+                "-vf", f"{CLIP_VF},{cap}", *ENC, c])
+        seglist.append(c); left -= d; i += 1
     if k in DCARDS:
         d = os.path.join(SEG, f"a{k}_d.mp4")
         frames = int(DCARD_D * 60)
