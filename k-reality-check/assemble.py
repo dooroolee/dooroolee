@@ -162,8 +162,8 @@ for k in range(1, 9):
 TOTAL = t
 print("act starts:", [(a["act"], round(a["start"],2)) for a in acts], "TOTAL", round(TOTAL,2))
 
-IMG_VF = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setsar=1,fps=60,format=yuv420p"
-CLIP_VF = "scale=1920:1080,setsar=1,fps=60,format=yuv420p"
+IMG_VF = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setsar=1,fps=24,format=yuv420p"
+CLIP_VF = "scale=1920:1080,setsar=1,fps=24,format=yuv420p"
 ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-an"]
 
 print("== building segments ==")
@@ -185,10 +185,10 @@ for a in acts:
         src = os.path.join(A, playlist[i])
         c = os.path.join(SEG, f"a{k}_m{i}.mp4")
         if src.lower().endswith((".png", ".jpg", ".jpeg")):
-            fr = max(int(d*60), 6)
-            kb = (f"scale=2112:1188:force_original_aspect_ratio=increase,crop=2112:1188,"
+            fr = max(int(d*24), 6)
+            kb = (f"scale=4224:2376:force_original_aspect_ratio=increase,crop=4224:2376,"
                   f"zoompan=z='min(zoom+{0.1/fr:.6f},1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
-                  f"d={fr}:s=1920x1080:fps=60,setsar=1,format=yuv420p")
+                  f"d={fr}:s=3840x2160:fps=24,scale=1920:1080,setsar=1,format=yuv420p")
             sh([FF, "-y", "-i", src, "-vf", f"{kb},{cap}", *ENC, c])
         else:
             sh([FF, "-y", "-i", src, "-t", f"{d:.3f}",
@@ -196,10 +196,10 @@ for a in acts:
         seglist.append(c)
     if k in DCARDS:
         d = os.path.join(SEG, f"a{k}_d.mp4")
-        frames = int(DCARD_D * 60)
-        kb = (f"scale=2112:1188:force_original_aspect_ratio=increase,crop=2112:1188,"
+        frames = int(DCARD_D * 24)
+        kb = (f"scale=4224:2376:force_original_aspect_ratio=increase,crop=4224:2376,"
               f"zoompan=z='min(zoom+{0.1/frames:.6f},1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
-              f"d={frames}:s=1920x1080:fps=60,setsar=1,format=yuv420p")
+              f"d={frames}:s=3840x2160:fps=24,scale=1920:1080,setsar=1,format=yuv420p")
         sh([FF, "-y", "-i", os.path.join(A, DCARDS[k]),
             "-vf", f"{kb},{cap}", *ENC, d]); seglist.append(d)
     print(f"  act {k} segments done")
