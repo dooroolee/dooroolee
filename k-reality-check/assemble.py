@@ -67,7 +67,7 @@ CAPTIONS = {1:("10,000+ REVIEWS ANALYZED","0x00B4D8"),
             4:("TRAP #3 | GUMMY BEAR ICE CUP","0xE63946"),
             5:("LOCAL PICK #1 | EOL-BAK-SA","0x21A179"),
             6:("LOCAL PICK #2 | GOMTANG + MANDU","0x21A179"),
-            7:("LOCAL PICK #3 | BUL-SAM-CHI","0x21A179"),
+            7:("LOCAL PICK #3 | BULDAK CHEESE RISOTTO","0x21A179"),
             8:("3 TRAPS vs 3 REAL HACKS","0x222222")}
 
 SENTS = {
@@ -91,7 +91,7 @@ SENTS = {
    "According to a survey on Korean university dorm forums, dropping frozen dumplings into hot Sari Gomtang bone broth ramen is the number one dorm survival hack.",
    "Convenience store POS data even shows a high companion purchase rate between these two items.",
    "Five minutes, five dollars, and one hundred percent rich comfort food backed by a decade of student data."],
-7:["And the holy grail of Korean convenience store meals? The Bul-Sam-Chi combo—Buldak noodles, a spicy triangle kimbap, and melted string cheese.",
+7:["And the holy grail of Korean convenience store meals? Tear triangle kimbap and string cheese right into hot Buldak noodles and mix—locals call it the Buldak cheese risotto.",
    "This combo has literally ranked number one on Everytime, Korea's largest university app, for over ten consecutive years.",
    "Millions of local students can't be wrong!"],
 8:["So today, we looked at three viral convenience store traps and three real hacks that Koreans ACTUALLY eat.",
