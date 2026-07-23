@@ -225,10 +225,13 @@ for a in acts:
     k = a["act"]
     r = subprocess.run([FF, "-i", os.path.join(A, CLIPS[k])], capture_output=True, text=True)
     if "Audio:" not in r.stderr: continue
-    inputs += ["-stream_loop", "-1", "-i", os.path.join(A, CLIPS[k])]
+    # ambience plays once, only while the primary clip is on screen (no looping)
+    inputs += ["-i", os.path.join(A, CLIPS[k])]
     ms = int((a["start"] + (PCARD_D if k in PCARDS else 0.0)) * 1000)
-    amb_d = a["dur"] - (PCARD_D if k in PCARDS else 0.0) - (DCARD_D if k in DCARDS else 0.0)
-    fparts.append(f"[{idx}:a]atrim=0:{amb_d:.3f},volume=0.22,aformat=sample_rates=48000:channel_layouts=stereo,adelay={ms}|{ms}[c{k}]")
+    body = a["dur"] - (PCARD_D if k in PCARDS else 0.0) - (DCARD_D if k in DCARDS else 0.0)
+    amb_d = body / (1 + len(EXTRAS.get(k, [])))
+    fparts.append(f"[{idx}:a]atrim=0:{amb_d:.3f},afade=t=out:st={max(amb_d-0.4,0):.3f}:d=0.4,"
+                  f"volume=0.22,aformat=sample_rates=48000:channel_layouts=stereo,adelay={ms}|{ms}[c{k}]")
     mix.append(f"[c{k}]"); idx += 1
 fchain = ";".join(fparts) + f";{''.join(mix)}amix=inputs={len(mix)}:duration=longest:normalize=0,alimiter=limit=0.9,apad=whole_dur={TOTAL:.3f}[out]"
 audio = os.path.join(OUT, "audio.m4a")
