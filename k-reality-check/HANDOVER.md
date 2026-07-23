@@ -14,7 +14,7 @@
 ```bash
 cd k-reality-check && python3 assemble.py
 ```
-- 출력: `out/K-Reality-Check-EP1.mp4` (1080p60, ~2분56초) + `out/K-Reality-Check-EP1.en.srt`
+- 출력: `out/K-Reality-Check-EP1.mp4` (1080p24, ~2분56초) + `out/K-Reality-Check-EP1.en.srt`
 - 스크립트가 다운로드(50개 파일) → 세그먼트 인코딩 → 오디오 믹스(VO 1.1배속 + 클립 환경음 22%) → 자막 리본 번인 → SRT 생성까지 전부 수행함
 - 전달 제약: 채팅 첨부 한도 30MiB(→ 720p 프리뷰로 전달), GitHub 파일 한도 100MB
   (→ 마스터는 2-pass 4Mbps 재인코딩본을 out/에 커밋; crf18 원본은 세션 로컬에만 존재)
