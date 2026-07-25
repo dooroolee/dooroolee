@@ -1,0 +1,361 @@
+# EP2 — 떡볶이 편 · 상세 시나리오 초안
+
+> 채널: KOREASIDER / 시리즈: Reality Check
+> 목표 길이: **2:47** (1920×1080, 24fps)
+> 작성일: 2026-07-25 · 상태: **초안 (가게 미확정)**
+
+---
+
+## 전제
+
+- **모든 가게명과 숫자는 예시(placeholder)다.** 조사 단계에서 실제 값으로 교체한다.
+  리듬과 문장 길이를 잡기 위해 실제처럼 써 뒀을 뿐이다.
+- 나레이션은 영어(Leo), 자막은 영어 SRT.
+- **카카오맵은 쓰지 않는다** (약관상 영리 목적 이용 금지). 한국 앱 지표는 네이버만 사용하고,
+  화면 표기는 `Naver` 또는 `Korean app`으로 통일한다.
+- 지도 화면은 네이버·구글 모두 사용. **구글은 출처 표기 필수**, 스트리트뷰는 캡처 금지.
+- 음식 이미지는 네이버 리뷰 사진 + 포토코리아(공공누리 1유형) 혼용.
+
+---
+
+## 표기 규칙
+
+| 기호 | 의미 |
+|---|---|
+| `[명동-T]` | 명동 관광객집 (Tourist) |
+| `[명동-L]` | 명동 로컬집 (Local) |
+| **굵은 숫자** | 조사 후 교체할 값 |
+| ▸ | 화면 전환 |
+
+**리본 색 규칙**
+- 인트로 = 시안 / 아웃트로 = 검정
+- `TOURIST FAVORITE` = 빨강
+- `LOCAL PICK` = 초록
+- **예외: 칸4만 `TOURIST FAVORITE`인데 초록** ← 반전 장치
+
+---
+
+# 칸 1 · 인트로
+
+**시간** 0:00 – 0:22 (22초) **리본** 시안 `KOREASIDER`
+
+### 화면
+```
+0:00  [영상 컷] 떡볶이 클로즈업, 김 올라오는 4초  ← 유일한 AI 영상
+0:04  ▸ 구글 카드     4.6 ★   ← 크게, 네온 옐로
+0:07  ▸ 네이버 카드   3.8     ← 크림슨으로 대비
+0:10  ▸ 두 카드 나란히 + "SAME SHOP"
+0:13  ▸ 검색량 카드   tteokbokki · 179,000 searches/mo (US)
+0:17  ▸ 서울 지도에 핀 3개 (명동·홍대·서촌) 순차 점등
+```
+
+### VO (5문장)
+```
+1  This tteokbokki shop has 4.6 stars on Google.
+2  Koreans give it 3.8.
+3  Same shop. Same food. Different app.
+4  Tteokbokki is the most searched Korean dish in the world.
+5  So I checked three tourist spots in Seoul — and what's a few minutes away.
+```
+
+### 설계 메모
+- **첫 4초 안에 숫자 두 개가 충돌해야 한다.** 떡볶이 설명은 4번 문장 한 줄로 끝낸다.
+- 영상 컷은 여기 하나만 쓴다. 나머지 칸은 전부 정지 이미지 + 켄번스.
+
+---
+
+# 칸 2 · 명동 관광객집
+
+**시간** 0:22 – 0:42 (20초) **리본** 빨강 `TOURIST FAVORITE`
+
+### 화면
+```
+0:22  지도 핀 1개 + [명동-T] 가게명
+0:25  구글 카드   4.6 ★ · 2,340 reviews
+0:28  언어 비율 바   82% not in Korean   ← 이 편의 핵심 그래픽
+0:31  음식 사진 (리뷰 사진) 2초
+0:33  ▸ 네이버 카드  3.8 · 412 reviews · 100% Korean
+0:37  한국인 리뷰 인용 1줄 (번역)
+      "관광지 가격이죠"  →  "Tourist prices."
+```
+
+### VO (5문장)
+```
+1  Myeongdong. You'll find this place in every English guide.
+2  4.6 on Google. Over two thousand reviews.
+3  Now the same shop, on the app Koreans actually use.
+4  3.8.
+5  Not bad. Just not what Koreans pick.
+```
+
+### 설계 메모
+- **"Not bad"를 반드시 넣는다.** 비난 톤으로 시작하면 칸4의 반전이 안 먹힌다.
+- 언어 비율 바는 6번 반복되는 시그니처 그래픽. 여기서 처음 등장하므로 0.5초 더 머문다.
+
+---
+
+# 칸 3 · 홍대 관광객집
+
+**시간** 0:42 – 1:02 (20초) **리본** 빨강 `TOURIST FAVORITE`
+
+### 화면
+```
+0:42  지도 핀 + [홍대-T]
+0:45  구글 4.5 ★ · 1,880 reviews · 76% not in Korean
+0:49  음식 사진 2초
+0:51  ▸ 네이버 3.5 · 690 reviews
+0:55  한국인 리뷰 인용
+      "양이 너무 적어요"  →  "Portions are small."
+```
+
+### VO (4문장)
+```
+1  Hongdae. Same pattern.
+2  4.5 on Google. 3.5 on Naver.
+3  The Korean reviews say the same thing every time.
+4  Nobody's angry. They're just not going back.
+```
+
+### 설계 메모
+- **칸2보다 빠르게 간다.** 시청자가 이미 패턴을 알기 때문에 설명을 줄이고 숫자만 던진다.
+- 여기서 지루해지는 걸 칸4가 받는다.
+
+---
+
+# 칸 4 · 서촌 관광객집 ★ 반전
+
+**시간** 1:02 – 1:22 (20초) **리본** **초록** `TOURIST FAVORITE`
+
+### 화면
+```
+1:02  지도 핀 + [서촌-T]
+1:05  구글 4.7 ★ · 1,140 reviews · 71% not in Korean
+1:09  ▸ (0.5초 정지 — 리본이 빨강→초록으로 바뀜)
+1:10  네이버 4.6 · 2,100 reviews    ← 예상과 다른 숫자
+1:14  음식 사진 2초
+1:16  한국인 리뷰 인용
+      "웨이팅해도 갈 만해요"  →  "Worth the wait."
+```
+
+### VO (6문장)
+```
+1  Seochon. I expected the same thing.
+2  4.7 on Google.
+3  And on Naver...
+4  4.6.
+5  This one's real. Koreans like it too.
+6  So it's not "tourist equals bad." It's more specific than that.
+```
+
+### 설계 메모
+- **이 영상에서 가장 중요한 20초다.** 채널 신뢰가 여기서 만들어진다.
+- 1:09의 0.5초 정지 + 리본 색 변경이 말보다 먼저 반전을 친다.
+  VO 3번("And on Naver...")에서 한 박자 쉬고 숫자를 띄운다.
+- 무조건 까는 채널이 아니라는 증명. 이게 있어야 칸5~7의 추천이 신뢰를 얻는다.
+
+---
+
+# 칸 5 · 명동 로컬집
+
+**시간** 1:22 – 1:42 (20초) **리본** 초록 `LOCAL PICK`
+
+### 화면
+```
+1:22  지도 핀 2개 + 도보선 애니메이션   6 min      ← 시그니처
+1:26  구글    8 reviews          ← 텅 빈 카드가 포인트
+1:29  네이버  1,247 reviews · 4.7 · 100% Korean
+1:33  음식 사진 2초
+1:35  한국인 리뷰 인용
+      "점심마다 갑니다"  →  "I come here every lunch."
+```
+
+### VO (4문장)
+```
+1  Six minutes from that first shop.
+2  Google reviews: eight.
+3  Naver: twelve hundred. All Korean.
+4  This is a lunch place. Office workers, every day.
+```
+
+### 설계 메모
+- **"8"이라는 숫자를 크게 띄운다.** 구글 리뷰가 거의 없다는 게 경고가 아니라 신호라는 걸
+  시각적으로 각인시킨다.
+- 도보선 애니메이션은 칸5·6·7에서 숫자만 바꿔 재사용한다 (템플릿 1개).
+
+---
+
+# 칸 6 · 홍대 로컬집
+
+**시간** 1:42 – 2:02 (20초) **리본** 초록 `LOCAL PICK`
+
+### 화면
+```
+1:42  지도 핀 2개 + 도보선   4 min
+1:46  구글    0 reviews          ← 아예 없음
+1:49  네이버  890 reviews · 4.6 · 100% Korean
+1:52  음식 사진 2초
+1:54  한국인 리뷰 인용
+      "학생 때부터 다녀요"  →  "Been coming since I was a student."
+```
+
+### VO (4문장)
+```
+1  Four minutes away.
+2  Zero reviews in English. Not one.
+3  Eight hundred and ninety in Korean.
+4  That's not a warning. That's the signal.
+```
+
+### 설계 메모
+- 칸5가 "8개", 칸6이 "0개"로 **강도가 올라간다.** 순서를 바꾸면 김이 빠진다.
+- VO 4번이 이 편의 부제 역할을 한다. 썸네일 문구 후보이기도 하다.
+
+---
+
+# 칸 7 · 서촌 로컬집
+
+**시간** 2:02 – 2:22 (20초) **리본** 초록 `LOCAL PICK`
+
+### 화면
+```
+2:02  지도 핀 2개 + 도보선   8 min
+2:06  구글  22 reviews
+2:08  네이버 1,530 reviews · 4.8 · 100% Korean
+2:12  음식 사진 2초
+2:14  ▸ 두 가게 비교 카드 (칸4의 서촌 관광객집 vs 여기)
+      Tourist shop 4.6  /  This one 4.8
+```
+
+### VO (5문장)
+```
+1  Eight minutes.
+2  Remember — the tourist spot here was actually good.
+3  Koreans still come to this one instead.
+4  Cheaper. Closer. And no line.
+5  Good isn't the same as chosen.
+```
+
+### 설계 메모
+- **칸4를 다시 불러온다.** 반전을 던져놓고 회수하지 않으면 구조가 안 닫힌다.
+- VO 5번이 아웃트로 규칙으로 넘어가는 다리 역할.
+
+---
+
+# 칸 8 · 아웃트로
+
+**시간** 2:22 – 2:47 (25초) **리본** 검정
+
+### 화면
+```
+2:22  3쌍 지도가 순차로 겹쳐지며 축소   6 min / 4 min / 8 min
+2:27  ▸ 규칙 카드 (풀스크린, 네온 옐로 배경)
+      "If the Google reviews are in your language,
+       you're eating the tourist version."
+2:34  ▸ 예외 카드 (작게)
+      "Except Seochon. Sometimes the tourists are right."
+2:38  ▸ 실용 팁 카드
+      Naver Map has an English mode.
+2:42  ▸ 구독 카드 + 다음 편 예고
+```
+
+### VO (6문장)
+```
+1  Three neighborhoods. Six shops.
+2  The pattern is simple.
+3  If the Google reviews are in your language, you're eating the tourist version.
+4  Not always bad — Seochon proved that.
+5  But now you can check before you queue. Naver Map has an English mode.
+6  Next time: the same test, on Korean fried chicken.
+```
+
+### 설계 메모
+- **가게 이름이 아니라 규칙을 남긴다.** 한국에 안 오는 시청자도 가져갈 게 있어야 한다.
+- 4번 문장으로 예외를 인정한다. 이게 빠지면 앞의 반전이 무의미해진다.
+- 6번은 다음 편 예고 겸 시리즈화 선언. (korean fried chicken = 미국 월 87,000 검색)
+
+---
+
+## VO 총계 및 크레딧 재계산
+
+| 칸 | 문장 수 |
+|---|---|
+| 1 인트로 | 5 |
+| 2 명동-T | 5 |
+| 3 홍대-T | 4 |
+| 4 서촌-T | 6 |
+| 5 명동-L | 4 |
+| 6 홍대-L | 4 |
+| 7 서촌-L | 5 |
+| 8 아웃트로 | 6 |
+| **합계** | **39문장** |
+
+```
+VO       39문장 × 2크레딧        = 78
+훅 영상  4초 1컷 × 18            = 18
+카드류   PIL 자체 생성            =  0
+음식컷   리뷰 사진 + 포토코리아    =  0
+지도     캡처 + 자체 그래픽        =  0
+──────────────────────────────────────
+합계                            약 96크레딧
+```
+
+> **이전 견적(38크레딧)은 VO를 10문장으로 잡은 것이라 틀렸다.**
+> 2분 47초를 채우려면 39문장이 필요하다. 그래도 EP1(600+)의 약 1/6이다.
+> 8월 21일 충전(1,200) 기준으로 월 여러 편 제작이 가능한 수준.
+
+---
+
+## 조사 단계에서 채워야 할 빈칸
+
+각 가게마다 아래 6개 값이 필요하다. **총 6곳 × 6항목 = 36개.**
+
+| 항목 | 출처 | 비고 |
+|---|---|---|
+| 가게명 (영문 표기) | — | 자막용 로마자 표기 확정 |
+| 구글 평점 | 구글 지도 | |
+| 구글 리뷰 수 | 구글 지도 | |
+| **구글 리뷰 중 비한국어 비율** | 수동 집계 | 최근 50개 기준으로 세면 충분 |
+| 네이버 평점 / 리뷰 수 | 네이버 지도 | |
+| 한국인 리뷰 인용 1줄 | 네이버 지도 | 짧고 번역 잘 되는 것 |
+
+추가로 **쌍마다 도보 시간 1개** (총 3개).
+
+### 선정 기준
+```
+관광객집: 구글 평점 4.5+ / 비한국어 리뷰 비율 70%+ / 관광 동선상 위치
+로컬집:   도보 10분 이내 / 네이버 리뷰 500+ / 구글 리뷰 50개 미만
+
+단, 서촌 관광객집만 예외:
+  네이버 평점도 4.5+ 인 곳을 골라야 칸4 반전이 성립한다.
+  → 이 조건에 맞는 곳을 먼저 찾고, 나머지 두 지역을 맞추는 게 빠르다.
+```
+
+---
+
+## 에셋 체크리스트
+
+**생성 필요 (크레딧 소모)**
+- [ ] VO 39문장 (Leo)
+- [ ] 인트로 훅 영상 1컷 (Seedance 4초, 떡볶이 클로즈업)
+
+**자체 제작 (0크레딧)**
+- [ ] 구글 카드 템플릿 ×6
+- [ ] 네이버 카드 템플릿 ×6
+- [ ] 언어 비율 바 그래픽 ×6
+- [ ] 도보선 애니메이션 ×3
+- [ ] 리뷰 인용 카드 ×6
+- [ ] 규칙 카드 / 예외 카드 / 팁 카드 / 구독 카드
+- [ ] 영어 SRT (한 줄 ≤48자)
+
+**수집 (0크레딧)**
+- [ ] 음식 사진 6~12장 (네이버 리뷰 + 포토코리아)
+- [ ] 지도 캡처 6~9장 (구글 출처 표기 필수)
+
+---
+
+## 미확정 사항
+
+1. **가게 6곳** — 조사 단계
+2. **훅 문장 최종본** — 칸1 VO 1~3번은 후보를 더 뽑아 비교할 것
+3. **제목 3후보 / 썸네일 / SEO 설명** — 대본 확정 후
+4. **BGM** — 유튜브 오디오 라이브러리에서 수동 추가 (EP1과 동일)
