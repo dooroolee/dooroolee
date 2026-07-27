@@ -3,7 +3,7 @@
 align 1.1x VO, burn act captions, encode 1080p60, emit SRT."""
 import os, subprocess, sys, json, urllib.request
 
-FF = "/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+FF = "/usr/bin/ffmpeg"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 A = os.path.join(ROOT, "assets"); SEG = os.path.join(ROOT, "seg"); OUT = os.path.join(ROOT, "out")
 for d in (A, SEG, OUT): os.makedirs(d, exist_ok=True)
@@ -24,7 +24,7 @@ VOS = {1:"hf_20260722_064744_c62f7814-fbe0-4461-a660-40bd5b0a43f2.wav",
        4:"hf_20260722_064750_79cce68d-852b-4575-8a52-c4514b77df4a.wav",
        5:"hf_20260722_064752_f5365edf-bb0a-4884-8020-c1fb42e6f0ae.wav",
        6:"hf_20260722_064754_5e423380-93f2-48b8-a83e-8ec9bbd51833.wav",
-       7:"hf_20260722_064902_cb0e2a12-4dcf-4b74-88e8-c825f9db1c47.wav",
+       7:"hf_20260723_083216_20359a83-0d5a-4258-b21e-66a69a7885f5.wav",
        8:"hf_20260722_064904_8a511745-12e7-45a0-a2c8-953185a7884e.wav"}
 PCARDS = {2:"hf_20260722_063741_a88dac34-d6b9-4e76-8e58-e55fe623eacb.png",
           3:"hf_20260722_063744_aec56f28-db41-49ec-9e21-066fda013dd1.png",
@@ -40,13 +40,44 @@ DCARDS = {1:"hf_20260722_064356_c2f4b3f3-2a8d-4ff5-a9cd-9bfff54f0e70.png",
           6:"hf_20260722_064407_69a37068-428a-4300-86c9-132d08430956.png",
           7:"hf_20260722_064409_998ec873-592a-44bf-8e14-4521dc320eca.png"}
 
+# extra montage footage per act, cycled with the primary clip under the VO.
+# .mp4 entries are cut in as 4s chunks; .png/.jpg entries get a 4s Ken Burns pan.
+EXTRAS = {
+ 1:["real_9abd6444.png",                                              # CU 매장 (실사)
+    "hf_20260722_072916_fc98b83b-a714-4ac7-b367-55202f21af7b.mp4",
+    "hf_20260722_072941_a982d52b-8003-448b-808a-6023d7c1515e.mp4",
+    "hf_20260723_083541_330dbecd-e25c-4c25-96ef-ca215d9cad3d.mp4"],   # N1 데이터 분석
+ 2:["real_2d_banana_coffee.png",                                      # 바나나우유+커피 (실사)
+    "hf_20260722_072942_194f8b8e-e88b-47b2-9385-19cc3c9653f5.mp4",
+    "hf_20260722_072943_21d38021-8ba4-4e26-a967-1494678b0c5e.mp4",
+    "up6_1af8c3d6.png"],                                              # 진열대 (실사)
+ 3:["hf_20260722_072945_1a72b8b4-b8fe-4aa0-b7be-316c47b3829f.mp4",
+    "hf_20260723_090602_eff13ea2-0a4d-4de7-b212-a8d71fe51ae2.mp4"],  # R1 불닭 롤 재생성
+ 4:["hf_20260722_073335_819cec96-25d4-4e9b-9ad0-60095ad04cf6.mp4",
+    "hf_20260722_073337_9780c1e4-63c6-430a-92f0-173c4d2ad249.mp4"],
+ 5:["real_5d_bacchus.png",                                            # 박카스+사이다 (실사)
+    "hf_20260722_073338_0eefc5c6-58d4-4d60-a153-ad61a8d7f18e.mp4",
+    "hf_20260723_135730_cc24462e-421e-4745-9a36-9ca7602f1718.mp4"],  # PC방 컷 v2 (빨대컵)
+ 6:["hf_20260723_083332_e5136cb6-6678-4bcc-b841-f0baac0ec0c3.mp4",   # R2 컵라면 만두 투하
+    "real_mandu_4s.mp4",                                              # 냉동고 만두 (실사 영상)
+    "hf_20260723_083415_371cb2aa-b395-4aa6-a0f4-b43a32e5c85a.mp4"],  # R3 기숙사 컵라면
+ 7:["up1_256bfc13.png",                                               # 불닭 치즈 리조또 (실사)
+    "hf_20260723_083449_48225d04-5fc7-4616-b9c8-dde0dfe0921b.mp4"],  # R4 삼각김밥 온전
+ 8:["hf_20260723_083646_b8f34996-9a77-4fe3-999c-21c4c838878b.mp4",   # 8D TRAP 나열
+    "hf_20260723_084255_a76cff71-6021-42bd-ad33-648834d9fe2d.mp4",   # 8E LOCAL 나열
+    "real_d328dd4f.png",                                              # 세븐일레븐 (실사)
+    "hf_20260722_073624_b1ae0da8-a75f-4e76-9653-5a1254c3ce2f.mp4",
+    "hf_20260722_073625_41f7d7ca-3762-48dc-8384-f6729508ddb2.mp4",
+    "hf_20260723_085821_3137f75f-cec6-4bbd-a517-0c2c50c6d307.mp4"],  # 8G 인사
+}
+
 CAPTIONS = {1:("10,000+ REVIEWS ANALYZED","0x00B4D8"),
             2:("TRAP #1 | BANANA MILK ESPRESSO","0xE63946"),
             3:("TRAP #2 | RICE PAPER BULDAK ROLL","0xE63946"),
             4:("TRAP #3 | GUMMY BEAR ICE CUP","0xE63946"),
             5:("LOCAL PICK #1 | EOL-BAK-SA","0x21A179"),
             6:("LOCAL PICK #2 | GOMTANG + MANDU","0x21A179"),
-            7:("LOCAL PICK #3 | BUL-SAM-CHI","0x21A179"),
+            7:("LOCAL PICK #3 | BULDAK CHEESE RISOTTO","0x21A179"),
             8:("3 TRAPS vs 3 REAL HACKS","0x222222")}
 
 SENTS = {
@@ -70,7 +101,7 @@ SENTS = {
    "According to a survey on Korean university dorm forums, dropping frozen dumplings into hot Sari Gomtang bone broth ramen is the number one dorm survival hack.",
    "Convenience store POS data even shows a high companion purchase rate between these two items.",
    "Five minutes, five dollars, and one hundred percent rich comfort food backed by a decade of student data."],
-7:["And the holy grail of Korean convenience store meals? The Bul-Sam-Chi combo—Buldak noodles, a spicy triangle kimbap, and melted string cheese.",
+7:["And the holy grail of Korean convenience store meals? Tear triangle kimbap and string cheese right into hot Buldak noodles and mix—locals call it the Buldak cheese risotto.",
    "This combo has literally ranked number one on Everytime, Korea's largest university app, for over ten consecutive years.",
    "Millions of local students can't be wrong!"],
 8:["So today, we looked at three viral convenience store traps and three real hacks that Koreans ACTUALLY eat.",
@@ -119,18 +150,20 @@ vo_dur = {k: ffprobe_duration(os.path.join(A, f)) for k, f in VOS.items()}
 vo_s = {k: v/1.1 for k, v in vo_dur.items()}
 print("VO durations (1.1x):", {k: round(v,2) for k,v in vo_s.items()})
 
-TAIL = 0.6; PCARD_D = 1.0; CLIP_D = 4.0
+# product card shows for PCARD_D but VO still enters at VO_LEAD so the card
+# overlaps the act's opening line instead of adding dead air (total length unchanged)
+TAIL = 0.6; VO_LEAD = 1.0; PCARD_D = 3.0; CLIP_D = 4.0; DCARD_D = 5.0
 acts, t = [], 0.0
 for k in range(1, 9):
-    lead = PCARD_D if k in PCARDS else 0.0
+    lead = VO_LEAD if k in PCARDS else 0.0
     dur = lead + vo_s[k] + TAIL
     acts.append({"act": k, "start": t, "lead": lead, "vo_off": t + lead, "dur": dur})
     t += dur
 TOTAL = t
 print("act starts:", [(a["act"], round(a["start"],2)) for a in acts], "TOTAL", round(TOTAL,2))
 
-IMG_VF = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setsar=1,fps=60,format=yuv420p"
-CLIP_VF = "scale=1920:1080,setsar=1,fps=60,format=yuv420p"
+IMG_VF = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setsar=1,fps=24,format=yuv420p"
+CLIP_VF = "scale=1920:1080,setsar=1,fps=24,format=yuv420p"
 ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-an"]
 
 print("== building segments ==")
@@ -141,19 +174,34 @@ for a in acts:
         p = os.path.join(SEG, f"a{k}_p.mp4")
         sh([FF, "-y", "-loop", "1", "-t", f"{PCARD_D:.3f}", "-i", os.path.join(A, PCARDS[k]),
             "-vf", f"{IMG_VF},{cap}", *ENC, p]); seglist.append(p)
-    c = os.path.join(SEG, f"a{k}_c.mp4")
-    if k == 8:
-        loop_d = vo_s[k] + TAIL
-        sh([FF, "-y", "-stream_loop", "12", "-i", os.path.join(A, CLIPS[k]), "-t", f"{loop_d:.3f}",
-            "-vf", f"{CLIP_VF},{cap}", *ENC, c]); seglist.append(c)
-    else:
-        sh([FF, "-y", "-i", os.path.join(A, CLIPS[k]), "-t", f"{CLIP_D:.3f}",
-            "-vf", f"{CLIP_VF},{cap}", *ENC, c]); seglist.append(c)
+    # montage: unique clips only (no repeats), body split evenly so every chunk fits in one clip
+    playlist = [CLIPS[k]] + EXTRAS.get(k, [])
+    body = a["dur"] - (PCARD_D if k in PCARDS else 0.0) - (DCARD_D if k in DCARDS else 0.0)
+    n = max(1, -(-int(body*1000) // int(CLIP_D*1000)))
+    if len(playlist) < n:
+        print(f"FATAL: act {k} needs {n} unique clips for {body:.2f}s but has {len(playlist)}"); sys.exit(1)
+    d = body / n
+    for i in range(n):
+        src = os.path.join(A, playlist[i])
+        c = os.path.join(SEG, f"a{k}_m{i}.mp4")
+        if src.lower().endswith((".png", ".jpg", ".jpeg")):
+            fr = max(int(d*24), 6)
+            kb = (f"scale=4224:2376:force_original_aspect_ratio=increase,crop=4224:2376,"
+                  f"zoompan=z='min(zoom+{0.1/fr:.6f},1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+                  f"d={fr}:s=3840x2160:fps=24,scale=1920:1080,setsar=1,format=yuv420p")
+            sh([FF, "-y", "-i", src, "-vf", f"{kb},{cap}", *ENC, c])
+        else:
+            sh([FF, "-y", "-i", src, "-t", f"{d:.3f}",
+                "-vf", f"{CLIP_VF},{cap}", *ENC, c])
+        seglist.append(c)
     if k in DCARDS:
         d = os.path.join(SEG, f"a{k}_d.mp4")
-        dur = vo_s[k] - CLIP_D + TAIL
-        sh([FF, "-y", "-loop", "1", "-t", f"{dur:.3f}", "-i", os.path.join(A, DCARDS[k]),
-            "-vf", f"{IMG_VF},{cap}", *ENC, d]); seglist.append(d)
+        frames = int(DCARD_D * 24)
+        kb = (f"scale=4224:2376:force_original_aspect_ratio=increase,crop=4224:2376,"
+              f"zoompan=z='min(zoom+{0.1/frames:.6f},1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+              f"d={frames}:s=3840x2160:fps=24,scale=1920:1080,setsar=1,format=yuv420p")
+        sh([FF, "-y", "-i", os.path.join(A, DCARDS[k]),
+            "-vf", f"{kb},{cap}", *ENC, d]); seglist.append(d)
     print(f"  act {k} segments done")
 
 concat_txt = os.path.join(SEG, "concat.txt")
@@ -164,6 +212,9 @@ sh([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat_txt, "-c", "copy", vide
 print("video concat ok:", round(ffprobe_duration(video_only),2), "s")
 
 print("== building audio ==")
+# VO only. Clip audio is NOT mixed in: the Seedance-generated clips carry
+# AI music/SFX/vocals, not clean ambience — so we keep just Leo's narration.
+# (BGM is added later by the user in the YouTube audio library.)
 inputs, fparts, mix = [], [], []
 idx = 0
 for a in acts:
@@ -172,15 +223,6 @@ for a in acts:
     ms = int(a["vo_off"] * 1000)
     fparts.append(f"[{idx}:a]atempo=1.1,aformat=sample_rates=48000:channel_layouts=stereo,adelay={ms}|{ms}[v{k}]")
     mix.append(f"[v{k}]"); idx += 1
-clip_amb = []
-for a in acts:
-    k = a["act"]
-    r = subprocess.run([FF, "-i", os.path.join(A, CLIPS[k])], capture_output=True, text=True)
-    if "Audio:" not in r.stderr: continue
-    inputs += ["-i", os.path.join(A, CLIPS[k])]
-    ms = int((a["start"] + a["lead"]) * 1000)
-    fparts.append(f"[{idx}:a]volume=0.22,aformat=sample_rates=48000:channel_layouts=stereo,adelay={ms}|{ms}[c{k}]")
-    mix.append(f"[c{k}]"); idx += 1
 fchain = ";".join(fparts) + f";{''.join(mix)}amix=inputs={len(mix)}:duration=longest:normalize=0,alimiter=limit=0.9,apad=whole_dur={TOTAL:.3f}[out]"
 audio = os.path.join(OUT, "audio.m4a")
 sh([FF, "-y", *inputs, "-filter_complex", fchain, "-map", "[out]", "-t", f"{TOTAL:.3f}", "-c:a", "aac", "-b:a", "192k", audio])
