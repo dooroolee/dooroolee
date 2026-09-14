@@ -1,0 +1,1015 @@
+<title>사물의 기원 채널 설계서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#ECEFF2;
+  --surface:#FFFFFF;
+  --plate:#111820;
+  --ink:#0E1419;
+  --ink2:#4C5966;
+  --ink3:#76828F;
+  --rule:#D2D8DE;
+  --rule2:#E3E7EB;
+  --accent:#0B5E8A;
+  --accent-soft:#E2EDF4;
+  --signal:#B04A18;
+  --signal-soft:#F6E7DE;
+  --ok:#2C6B4F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0C1116;
+    --surface:#141A21;
+    --plate:#05080B;
+    --ink:#E7ECF1;
+    --ink2:#9AA7B3;
+    --ink3:#6D7A87;
+    --rule:#252D36;
+    --rule2:#1C242C;
+    --accent:#63AFDD;
+    --accent-soft:#12242F;
+    --signal:#E08A57;
+    --signal-soft:#2A1A11;
+    --ok:#6FBE97;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1116;
+  --surface:#141A21;
+  --plate:#05080B;
+  --ink:#E7ECF1;
+  --ink2:#9AA7B3;
+  --ink3:#6D7A87;
+  --rule:#252D36;
+  --rule2:#1C242C;
+  --accent:#63AFDD;
+  --accent-soft:#12242F;
+  --signal:#E08A57;
+  --signal-soft:#2A1A11;
+  --ok:#6FBE97;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-weight:400;
+  line-height:1.72;
+  font-size:15.5px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 20px;
+  padding-block:0 72px;
+}
+.col{max-width:680px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1px solid var(--rule);
+  padding-block:56px 34px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.stamp{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+}
+h1{
+  font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;
+  font-weight:400;
+  font-size:clamp(38px,7.2vw,64px);
+  line-height:1.04;
+  letter-spacing:-.015em;
+  margin:0;
+  text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.dek{
+  font-size:17px;
+  color:var(--ink2);
+  max-width:56ch;
+  margin:0;
+  font-weight:300;
+}
+
+/* ---------- sections ---------- */
+section{padding-block:52px 0}
+.shead{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  border-top:2px solid var(--ink);
+  padding-top:12px;
+  margin-bottom:26px;
+}
+.snum{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.1em;
+  color:var(--accent);
+  flex:none;
+}
+h2{
+  font-size:23px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  margin:0;
+  line-height:1.3;
+}
+h3{
+  font-size:16px;
+  font-weight:600;
+  margin:34px 0 10px;
+  letter-spacing:-.005em;
+}
+h3:first-child{margin-top:0}
+p{margin:0 0 14px}
+.col p:last-child{margin-bottom:0}
+strong{font-weight:600}
+a{color:var(--accent)}
+
+.lede{font-size:16.5px;color:var(--ink2)}
+
+/* ---------- spec grid ---------- */
+.spec{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin:24px 0;
+}
+.spec div{
+  background:var(--surface);
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.spec dt,.klabel{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink3);
+}
+.spec dd{
+  margin:0;
+  font-size:17px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em;
+}
+.spec small{display:block;font-size:12.5px;color:var(--ink2);font-weight:400;line-height:1.5}
+
+/* ---------- thumbnail plate ---------- */
+.plate{
+  background:var(--plate);
+  color:#F4F7FA;
+  padding:30px 26px;
+  margin:24px 0;
+  display:grid;
+  gap:18px;
+}
+.hookrow{display:grid;gap:7px}
+.hooktag{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#7FB6D6;
+}
+.hooktxt{
+  font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;
+  font-size:clamp(21px,4.1vw,30px);
+  line-height:1.22;
+  letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.hooktxt b{color:#F2A06A;font-weight:400}
+
+/* ---------- tables ---------- */
+.tscroll{overflow-x:auto;margin:22px 0;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:13.5px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule2);vertical-align:top;line-height:1.55}
+thead th{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  font-weight:500;
+  border-bottom:1px solid var(--rule);
+  white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:0}
+td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink2)}
+td.ep{font-weight:600;white-space:nowrap}
+
+.tag{
+  display:inline-block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  letter-spacing:.08em;
+  padding:2px 7px;
+  border:1px solid currentColor;
+  white-space:nowrap;
+}
+.tag.sure{color:var(--ok)}
+.tag.check{color:var(--signal)}
+
+/* ---------- timeline ---------- */
+.tl{margin:26px 0;display:grid;gap:2px}
+.tlrow{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  gap:16px;
+  background:var(--surface);
+  border-left:3px solid var(--rule);
+  padding:13px 16px;
+}
+.tlrow.hook{border-left-color:var(--signal);background:var(--signal-soft)}
+.tlrow.ad{border-left-color:var(--accent);background:var(--accent-soft)}
+.tlt{
+  font-family:"IBM Plex Mono",monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink2);
+  padding-top:2px;
+}
+.tlb strong{display:block;font-size:14.5px;margin-bottom:3px}
+.tlb span{font-size:13px;color:var(--ink2);line-height:1.55}
+
+/* ---------- callout ---------- */
+.note{
+  border-left:3px solid var(--accent);
+  background:var(--surface);
+  padding:16px 18px;
+  margin:22px 0;
+  font-size:14px;
+  line-height:1.65;
+}
+.note .klabel{display:block;margin-bottom:6px;color:var(--accent)}
+.note.warn{border-left-color:var(--signal)}
+.note.warn .klabel{color:var(--signal)}
+.note p{margin:0 0 8px}
+.note p:last-child{margin:0}
+
+/* ---------- list ---------- */
+ul.clean{list-style:none;padding:0;margin:14px 0;display:grid;gap:10px}
+ul.clean li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  font-size:14.5px;
+  line-height:1.6;
+}
+ul.clean li::before{
+  content:"—";
+  color:var(--ink3);
+  font-family:"IBM Plex Mono",monospace;
+}
+
+/* ---------- name cards ---------- */
+.names{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0}
+.name{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:1fr;gap:4px}
+.name b{
+  font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;
+  font-weight:400;
+  font-size:21px;
+  letter-spacing:-.01em;
+}
+.name span{font-size:13.5px;color:var(--ink2);line-height:1.6}
+.name.top{background:var(--accent-soft)}
+.name.top b{color:var(--accent)}
+
+/* ---------- script ---------- */
+.script{margin:22px 0;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.beat{background:var(--surface);padding:18px}
+.beathead{
+  display:flex;
+  gap:12px;
+  align-items:baseline;
+  margin-bottom:10px;
+  flex-wrap:wrap;
+}
+.beathead .t{
+  font-family:"IBM Plex Mono",monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:12px;
+  font-weight:600;
+  color:var(--accent);
+  letter-spacing:.04em;
+}
+.beathead .role{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink3);
+}
+.vo{font-size:15px;line-height:1.78;margin:0 0 10px}
+.vo em{font-style:normal;background:var(--signal-soft);color:var(--signal);padding:0 3px;font-weight:500}
+.viz{
+  font-size:12.5px;
+  color:var(--ink2);
+  line-height:1.6;
+  border-top:1px dashed var(--rule);
+  padding-top:9px;
+  margin:0;
+}
+.viz b{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:500}
+
+/* ---------- pipeline ---------- */
+.pipe{display:grid;gap:2px;margin:24px 0}
+.stage{
+  display:grid;
+  grid-template-columns:88px 1fr;
+  gap:16px;
+  background:var(--surface);
+  border:1px solid var(--rule);
+  padding:16px 18px;
+}
+.stage .sn{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  padding-top:3px;
+}
+.stage .sb strong{display:block;font-size:15px;margin-bottom:4px}
+.stage .sb p{font-size:13.5px;color:var(--ink2);margin:0 0 8px;line-height:1.6}
+.stage .sb p:last-child{margin:0}
+.code{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  line-height:1.65;
+  background:var(--plate);
+  color:#D6E2EA;
+  padding:14px 16px;
+  overflow-x:auto;
+  white-space:pre;
+  margin:10px 0 0;
+}
+.code b{color:#8FD0F5;font-weight:500}
+.code i{color:#F2A06A;font-style:normal}
+.ptpl{
+  border:1px solid var(--rule);
+  background:var(--surface);
+  padding:16px 18px;
+  margin:14px 0;
+  font-size:13.5px;
+  line-height:1.7;
+}
+.ptpl .klabel{display:block;margin-bottom:8px;color:var(--accent)}
+.ptpl q{quotes:none;display:block;color:var(--ink2);border-left:2px solid var(--rule);padding-left:12px}
+@media (max-width:560px){
+  .stage{grid-template-columns:1fr;gap:6px}
+}
+
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--accent-soft);color:var(--accent);padding:1px 5px}
+footer{
+  border-top:1px solid var(--rule);
+  margin-top:60px;
+  padding-top:20px;
+  font-size:12.5px;
+  color:var(--ink3);
+  line-height:1.7;
+}
+@media (max-width:560px){
+  .tlrow{grid-template-columns:1fr;gap:4px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="stamp">
+    <span>채널 설계서</span><span>Rev. 1</span><span>2026-09-13</span><span>1인 AI 제작</span>
+  </div>
+  <h1>모든 물건에는<br><em>첫날</em>이 있다</h1>
+  <p class="dek">일상 사물의 기원을 다루는 무인물(無人物) AI 다큐 채널. 8분 30초 이상 롱폼, 초단편급 편집 속도, 편당 하나의 공학적 딜레마.</p>
+</header>
+
+<section>
+  <div class="shead"><span class="snum">01</span><h2>채널 정의</h2></div>
+  <div class="col">
+    <p class="lede">한 줄 정의 — <strong>“당신이 매일 쓰지만 한 번도 궁금해한 적 없는 물건이, 왜 하필 그렇게 생겼는지”</strong></p>
+    <p>벤치마크(「신비한 건축사전」)와 포맷 문법은 공유하되 소재 영역을 분리한다. 벤치마크가 <strong>“이게 왜 이렇게 생겼나”</strong>(대형 구조물의 작동 원리)라면, 이 채널은 <strong>“이게 원래 뭐였나”</strong>(사물의 기원과 용도 전환)다. 훅의 종류가 달라서 알고리즘과 시청자 모두 두 채널을 다르게 인식한다.</p>
+  </div>
+
+  <div class="spec">
+    <div><span class="klabel">영상 길이</span><dd>5 – 10분</dd><small>이야기가 정한다. 길이를 맞추려고 대본을 늘리지 않는다.</small></div>
+    <div><span class="klabel">업로드</span><dd>주 2 – 3편</dd><small>고정 요일. 빈도보다 간격의 일관성이 중요.</small></div>
+    <div><span class="klabel">출연</span><dd>무인물</dd><small>AI 인물 리스크 원천 제거. 사물·구조·지도·텍스트만.</small></div>
+    <div><span class="klabel">평균 컷</span><dd>2.2초</dd><small>편당 약 200컷. 컷 종류를 섞어 제작량을 통제한다.</small></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">02</span><h2>훅 설계 — 스케일 대신 세 축</h2></div>
+  <div class="col">
+    <p>벤치마크의 훅은 <strong>물리적 크기</strong>에 의존한다(“아파트 30층 높이”, “8.5톤 트럭 1,300만 대”). 일상 사물은 크지 않으므로 그 축을 그대로 쓰면 훅이 비어버린다. 크기 대신 이 세 축으로 치환한다.</p>
+  </div>
+
+  <div class="plate">
+    <div class="hookrow">
+      <span class="hooktag">축 1 — 편재성 / 크기가 아니라 개수</span>
+      <span class="hooktxt">지금 이 순간, 전 세계에서 <b>2억 대</b>가 동시에 돌고 있습니다</span>
+    </div>
+    <div class="hookrow">
+      <span class="hooktag">축 2 — 시간 낙차 / 크기가 아니라 최근성</span>
+      <span class="hooktxt">이 깡통을 여는 데 인류는 <b>48년</b>이 걸렸습니다</span>
+    </div>
+    <div class="hookrow">
+      <span class="hooktag">축 3 — 무의식 / 크기가 아니라 인지 격차</span>
+      <span class="hooktxt">당신은 오늘 이걸 <b>열한 번</b> 만졌고, 원리는 모릅니다</span>
+    </div>
+  </div>
+
+  <div class="col">
+    <p>세 축 모두 벤치마크의 “당신이 아는 그 공원이 사실은”과 같은 <strong>상식 전복</strong> 구조다. 환산 대상만 바꾼 것이다. 소재를 정할 때 세 축 중 최소 하나에 걸리지 않으면 그 소재는 버린다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">03</span><h2>서사 구조 — 고정과 가변</h2></div>
+  <div class="col">
+    <p><strong>아래 타임라인은 표준형이지 의무가 아니다.</strong> 소재마다 이야기의 모양이 다른데 틀을 억지로 맞추면 늘어지거나 잘린다. 고정할 것만 고정하고 나머지는 소재에 맞춰 바꾼다.</p>
+  </div>
+
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>고정 — 편마다 같다</th><th>가변 — 소재가 정한다</th></tr></thead>
+    <tbody>
+      <tr><td>5 – 10분 범위</td><td>그 안의 실제 길이 — 이야기가 정한다</td></tr>
+      <tr><td>0~20초 훅, 세 축 중 하나</td><td>딜레마가 1단인지 2단인지</td></tr>
+      <tr><td>미드롤은 훅 직전에만</td><td>미드롤 개수 — 8분을 넘길 때만 3개</td></tr>
+      <tr><td>2분 내외마다 새 훅</td><td>시간 순서로 갈지 역순으로 갈지</td></tr>
+      <tr><td>수미상관 + 통찰로 마무리</td><td>인물을 세울지 사건만 다룰지</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note warn">
+    <span class="klabel">길이를 맞추려고 대본을 늘리지 않는다</span>
+    <p>8분을 넘기면 미드롤이 붙어 수익이 크게 달라지는 것은 사실이다. 그러나 <strong>길이를 먼저 정하고 대본을 거기에 맞추면 반드시 늘어진다.</strong> 순서는 반대다 — 이야기가 필요한 만큼 쓰고, 그 결과가 8분을 넘으면 미드롤을 배치하고 넘지 않으면 그냥 간다.</p>
+    <p>분량이 모자랄 때 채우는 방법은 문장을 늘이는 것이 아니라 <strong>약한 문단을 강한 내용으로 바꾸는 것</strong>이다. 덜어낼 곳이 없는데도 5분에 못 미치면 그 소재는 한 편을 지탱하지 못하는 것이므로 다른 소재와 묶는다.</p>
+  </div>
+
+  <h3>이야기 모양에 따른 네 가지 골격</h3>
+  <ul class="clean">
+    <li><strong>딜레마형</strong> — 통조림, 전자레인지, 트렌치코트. “A를 풀면 B가 터진다”가 중심. 아래 표준형이 그대로 맞는다.</li>
+    <li><strong>지연형</strong> — 지퍼(20년), 페니실린(12년), 마취(40년). 답은 이미 있었는데 세상이 안 썼다. 딜레마 대신 <strong>“왜 이렇게 오래 걸렸나”</strong>를 2막 전체에 깐다.</li>
+    <li><strong>배신형</strong> — 디지털카메라, 포스트잇. 성공이 곧 자기 파괴이거나, 실패작이 답이었다. 반전 지점을 4:30 미드롤 직후에 놓고 전후를 뒤집는다.</li>
+    <li><strong>확산형</strong> — 컨테이너, 인터넷, GPS. 물건보다 <strong>그 결정이 세계를 바꾼 규모</strong>가 본론. 3막을 짧게 줄이고 4막을 두 배로 늘린다.</li>
+  </ul>
+
+  <div class="col">
+    <p style="font-size:14px;color:var(--ink2)">소재를 정할 때 네 골격 중 어디에 속하는지 먼저 판단하고, 그다음 타임라인을 그 골격에 맞춰 조정한다. 아래는 딜레마형 기준 표준형이다.</p>
+  </div>
+
+  <div class="tl">
+    <div class="tlrow hook"><span class="tlt">0:00</span><span class="tlb"><strong>훅 — 상식 전복</strong><span>세 축 중 하나로 즉시 타격. 20초 안에 주제 제시.</span></span></div>
+    <div class="tlrow"><span class="tlt">0:20</span><span class="tlb"><strong>문제 정의 (한 줄)</strong><span>“이 물건의 문제는 딱 하나였습니다.” 영상 전체를 관통하는 단일 명제.</span></span></div>
+    <div class="tlrow"><span class="tlt">0:50</span><span class="tlb"><strong>1막 — 이게 없던 세상</strong><span>당시의 생활·전쟁·산업 조건. 왜 필요했는가.</span></span></div>
+    <div class="tlrow ad"><span class="tlt">2:10</span><span class="tlb"><strong>미드롤 ①</strong><span>훅 직전에 배치. 끊긴 자리에서 궁금증이 최대일 때.</span></span></div>
+    <div class="tlrow hook"><span class="tlt">2:15</span><span class="tlb"><strong>훅 2 — 1차 딜레마</strong><span>“A를 해결하면 B가 터진다.” 양립 불가능한 모순 제시.</span></span></div>
+    <div class="tlrow"><span class="tlt">2:35</span><span class="tlb"><strong>2막 — 1차 해결과 그 대가</strong><span>해결책이 나오지만, 더 큰 문제를 만든다.</span></span></div>
+    <div class="tlrow ad"><span class="tlt">4:30</span><span class="tlb"><strong>미드롤 ②</strong></span></div>
+    <div class="tlrow hook"><span class="tlt">4:35</span><span class="tlb"><strong>훅 3 — 2차 딜레마</strong><span>“그런데 아무도 이걸 생각하지 못했습니다.”</span></span></div>
+    <div class="tlrow"><span class="tlt">4:55</span><span class="tlb"><strong>3막 — 진짜 해결</strong><span>3단계 넘버링으로 압축. 숫자·지도·단면 집중 구간.</span></span></div>
+    <div class="tlrow ad"><span class="tlt">6:50</span><span class="tlb"><strong>미드롤 ③</strong></span></div>
+    <div class="tlrow hook"><span class="tlt">6:55</span><span class="tlb"><strong>훅 4 — 현재로 이동</strong><span>“그리고 지금, 당신 집에도 있습니다.”</span></span></div>
+    <div class="tlrow"><span class="tlt">7:15</span><span class="tlb"><strong>4막 — 확산과 유산</strong><span>세상을 어떻게 바꿨나. 편재성 수치 회수.</span></span></div>
+    <div class="tlrow"><span class="tlt">8:00</span><span class="tlb"><strong>수미상관 + 통찰</strong><span>도입부 장면을 재해석. 한 줄 통찰로 닫고 즉시 끝낸다. <strong>다음 편 예고는 하지 않는다.</strong></span></span></div>
+  </div>
+
+  <div class="note">
+    <span class="klabel">다음 편 예고는 넣지 않는다</span>
+    <p>예고는 마지막 10초를 광고로 만들고, 통찰로 닫은 여운을 흩는다. <strong>한 줄로 끝내고 바로 끊는다.</strong> 다음 영상으로 넘기는 일은 엔드카드와 추천 피드가 한다. 마무리가 짧을수록 마지막 구간 이탈도 적다.</p>
+  </div>
+
+  <div class="note">
+    <span class="klabel">미드롤 배치 원칙</span>
+    <p>훅 <strong>직전</strong>에 넣는다. 광고가 끝나고 바로 궁금증이 해소되는 배치라 이탈률이 가장 낮다. 유튜브 자동 배치는 끄고 수동으로 지정할 것.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">04</span><h2>비주얼 시스템</h2></div>
+  <div class="col">
+    <p><strong>화면에 나오는 모든 픽셀은 하나의 모델에서 나온다.</strong> 모델마다 색 과학·노이즈·조명 논리가 달라 섞으면 컷이 바뀔 때마다 이물감이 난다. 빠른 편집에서는 더 드러난다. 그래서 이미지 모델과 영상 모델을 나누지 않고 <strong>영상 모델 하나로 통일한다.</strong></p>
+    <p>스틸 줌 컷도 따로 생성하지 않는다. <strong>생성한 클립에서 프레임을 뽑아 쓴다.</strong> 추가 비용이 0이고 톤은 정의상 완전히 일치한다. 계측 요소(치수선·그리드·게이지)는 영상 프롬프트 안에서 함께 그리고, <strong>정확한 숫자는 템플릿 오버레이가 책임진다</strong> — 모델이 쓴 숫자를 믿지 않는다.</p>
+    <p>후반 작업에 남기는 것은 세 가지뿐이다. 숫자 카드 자동 생성, 컷 전환 정렬, 자막. 편당 손으로 만드는 그래픽은 <strong>0을 목표로 한다.</strong></p>
+  </div>
+
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>컷 종류</th><th>비중</th><th>길이</th><th>출처</th></tr></thead>
+    <tbody>
+      <tr><td>8초 씬 (2비트)</td><td class="n">55 – 60%</td><td class="n">비트당 3 – 5초</td><td>단일 영상 모델. 씬당 비트 2개.</td></tr>
+      <tr><td>추출 스틸 + 줌/팬</td><td class="n">20 – 25%</td><td class="n">2 – 3초</td><td><strong>생성한 클립에서 프레임을 뽑아 쓴다.</strong> 추가 생성 없음, 톤 100% 일치.</td></tr>
+      <tr><td>텍스트·숫자 카드</td><td class="n">15 – 20%</td><td class="n">1.5 – 2초</td><td>훅 숫자·넘버링 등 구조용. 템플릿에 값만 주입.</td></tr>
+      <tr><td>퍼블릭 도메인 자료</td><td class="n">5%</td><td class="n">2 – 3초</td><td>특허 도면, 시대 사진. 출처 표기 필수.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note warn">
+    <span class="klabel">수치가 틀린 컷은 고치지 말고 버린다</span>
+    <p>모델이 그린 숫자가 틀린 클립은 반드시 나온다. 손으로 수정하면 편당 제작 시간이 무너진다. 규칙은 <strong>재생성 1회, 그래도 틀리면 그 부분을 화면에서 지우고 해당 정보는 나레이션과 숫자 카드가 맡는다.</strong> 포토샵을 여는 순간 이 파이프라인의 속도 이점이 사라진다.</p>
+  </div>
+
+  <h3>톤 & 문법</h3>
+  <div class="col">
+    <p>벤치마크 채널의 룩(어두운 화면 + 웅장한 부감 + 빨간 계측선)을 따라가면 아류로 읽힌다. 그 문법은 <strong>거대 구조물</strong>에 맞춰진 것이고, 우리 피사체는 손에 잡히는 물건이다. 조명과 카메라를 콘크리트 구조물처럼 다루면 어색하기까지 하다. 방향을 반대로 잡는다.</p>
+  </div>
+  <ul class="clean">
+    <li><strong>그라운드 — 어둡지 않고 밝다.</strong> 미술관 전시실 벽 같은 중성 회백을 기본 배경으로 두고, 사물에만 강한 방향광과 깊은 그림자를 준다. 밝지만 콘트라스트가 센 화면. 어두운 화면으로 무게를 만드는 방식과 정반대 지점이다.</li>
+    <li><strong>시간 색 코드 — 이 채널의 서명.</strong> 과거 구간은 탈색된 카키·시안(오래된 컬러 필름), 현재 구간은 중성 백색에 차가운 하이라이트. <strong>서사가 시대를 옮길 때 화면 색이 함께 바뀐다.</strong> 훅의 “시간 낙차” 축을 시각으로 그대로 옮긴 장치라 우리 채널에만 성립한다.</li>
+    <li><strong>계측선·보조선 — 색과 수치는 모델에 맡긴다.</strong> 치수선, 고정·이동 보조선, 게이지의 색상과 숫자를 프롬프트로 지정하지 않는다. 생성 속도를 우선한 결정이다. <strong>대가는 클립마다 색이 달라질 수 있다는 것</strong>이므로, 1화 완성 후 실제 화면을 보고 편차가 거슬리면 그때 한 색으로 잠근다.</li>
+    <li><strong>씬 규격 — 8초 2비트.</strong> 한 씬은 8초, 비트는 최대 2개. 그 이상 쪼개면 모델이 장면을 잃는다.</li>
+    <li><strong>카메라 — 테이블톱 문법.</strong> 턴테이블 오빗, 수직 탑다운, 테이블톱 매크로, 얕은 심도 랙 포커스, 그리고 필요할 때 횡이동 트래킹. 제품 촬영과 박물관 촬영의 문법이다. <strong>비트 두 개의 조합은 씬 내용이 정한다 — 고정 공식을 쓰지 않는다.</strong></li>
+    <li><strong>쓰지 않는 것</strong> — 항공 부감, 크레인 하강. 구조물 채널과 가장 빨리 겹치는 지점이다.</li>
+    <li><strong>배경 레이어</strong> — 종이 질감, 특허 도면, 카탈로그 그리드가 은은하게 깔린다. 흙·콘크리트·철골이 아니라 문서와 작업대의 세계.</li>
+    <li><strong>HUD</strong> — 수치가 나올 때마다 치수선·축척 눈금·게이지 상승을 오버레이. 정적인 자막이 아니라 값이 차오르는 모션.</li>
+    <li><strong>나레이션</strong> — 저음, 느리지 않되 서두르지 않는 다큐 톤. 문장은 짧게, 한 문장 한 정보.</li>
+    <li><strong>자막</strong> — 화면 하단 고정 대신 키워드만 큰 글씨로. 무음 시청자를 위해 핵심 수치는 반드시 화면에 표기(숫자·영문만).</li>
+  </ul>
+
+  <div class="note">
+    <span class="klabel">차별화 점검 — 편집 전 세 가지만 확인</span>
+    <p>① 화면이 전반적으로 어두운가 → 밝게 다시. ② 항공 부감·크레인이 두 번 이상인가 → 테이블톱으로 교체. ③ 계측선이 빨간가 → 앰버로.</p>
+    <p>이 셋만 지켜도 같은 포맷을 쓰면서 다른 채널로 읽힌다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">05</span><h2>채널명 후보</h2></div>
+  <div class="col">
+    <p><strong>“○○사전” 계열은 피한다.</strong> 벤치마크 채널을 즉시 연상시켜 아류로 보인다. 확장성도 함께 본다 — 시즌 2 이후 식재료·돈·기술로 넘어갈 때 이름이 발목을 잡으면 안 된다.</p>
+  </div>
+  <div class="names">
+    <div class="name top"><b>쓸모의 기원</b><span>1순위. 담백하고 확장 무한. “쓸모”가 사물·식재료·기술·제도 전부를 덮는다. 검색 중복이 적고 발음이 짧아 구독 각인에 유리.</span></div>
+    <div class="name"><b>물건 해부도</b><span>절단면 비주얼과 이름이 직결돼 채널 정체성이 한눈에 잡힌다. 다만 “물건”에 묶여 식재료 확장 시 어색.</span></div>
+    <div class="name"><b>발명의 뒷면</b><span>“뒷면”이 반전 훅을 예고한다. 발명 이야기에만 갇히는 게 약점.</span></div>
+    <div class="name"><b>이것의 첫날</b><span>기원이라는 주제를 가장 직관적으로 표현. 제목마다 “○○의 첫날”로 시리즈화 가능.</span></div>
+    <div class="name"><b>전사(前史)</b><span>가장 짧고 강하지만 한자어라 진입 장벽. 썸네일에서는 강력.</span></div>
+  </div>
+  <div class="col">
+    <p style="font-size:14px;color:var(--ink2)">확정 전 체크 — ① 유튜브·인스타·네이버에서 동명 계정 검색 ② 상표 출원 여부 확인 ③ 영문 표기 정하기(다국어 오디오 트랙 확장 대비).</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">06</span><h2>소재 20편 — 딜레마 검증표</h2></div>
+  <div class="col">
+    <p>소재의 자격은 하나다. <strong>“A를 해결하면 B가 터지는” 모순이 실제로 존재했는가.</strong> 없으면 그 소재는 8분을 못 버틴다. 아래는 그 모순이 확인되는 것만 추렸다.</p>
+    <p style="font-size:14px;color:var(--ink2)"><span class="tag sure">확실</span> 1차 사료·특허 기록으로 확인 가능 &nbsp;/&nbsp; <span class="tag check">통설</span> 널리 퍼졌으나 이설이 있음 — 대본에서 “~라고 전해진다”로 처리하거나 별도 검증 필요.</p>
+  </div>
+
+  <h3>시즌 1 — 전쟁이 만든 물건</h3>
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>#</th><th>소재</th><th>딜레마</th><th>검증</th></tr></thead>
+    <tbody>
+      <tr><td class="n">01</td><td class="ep">통조림</td><td>음식을 완벽히 밀봉하는 데는 성공했는데, 여는 도구가 48년 뒤에 나왔다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">02</td><td class="ep">전자레인지</td><td>마이크로파를 가두려면 상자가 전부 금속이어야 하는데, 사람은 안을 봐야 한다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">03</td><td class="ep">손목시계</td><td>참호에서 회중시계를 꺼낼 시간이 없는데, 손목에 차면 유리가 깨진다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">04</td><td class="ep">트렌치코트</td><td>고무로 방수하면 땀이 안 빠지고, 통기시키면 비에 젖는다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">05</td><td class="ep">티슈</td><td>전쟁이 끝나자 붕대 대체재 재고가 산더미로 남았다. 버리거나, 용도를 새로 만들거나.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">06</td><td class="ep">나일론</td><td>실크 수입이 끊겨 낙하산을 못 만든다. 대체재는 만들었는데, 전시에는 민간에 팔 수 없다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">07</td><td class="ep">순간접착제</td><td>조준경을 만들려다 모든 게 들러붙어 두 번 폐기된 실패작.</td><td><span class="tag check">통설</span></td></tr>
+      <tr><td class="n">08</td><td class="ep">GPS</td><td>위성 위치를 알면 내 위치를 안다. 그런데 민간에 열면 적도 쓴다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">09</td><td class="ep">인터넷</td><td>중앙 통제소가 있으면 효율적이지만, 그게 파괴되면 전부 죽는다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">10</td><td class="ep">컨테이너</td><td>규격을 통일하면 모두가 이득인데, 통일하는 순간 먼저 투자한 사람이 손해다.</td><td><span class="tag sure">확실</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>시즌 2 — 실패가 만든 물건</h3>
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>#</th><th>소재</th><th>딜레마</th><th>검증</th></tr></thead>
+    <tbody>
+      <tr><td class="n">11</td><td class="ep">포스트잇</td><td>붙기는 하는데 안 붙어 있는 접착제. 명백한 실패작이었고, 쓸 데를 찾는 데 몇 년이 걸렸다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">12</td><td class="ep">안전유리</td><td>유리는 깨져야 쓸모 있고, 깨지면 사람을 벤다.</td><td><span class="tag check">통설</span></td></tr>
+      <tr><td class="n">13</td><td class="ep">지퍼</td><td>20년간 아무도 사지 않았다. 옷이 아니라 군용 장비에서 살아남았다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">14</td><td class="ep">디지털카메라</td><td>필름 회사가 발명했다. 성공시키면 자기 본업이 죽는다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">15</td><td class="ep">페니실린</td><td>1928년에 발견했는데 12년간 아무도 쓰지 못했다. 만들 수가 없어서.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">16</td><td class="ep">에어컨</td><td>애초에 사람을 위한 기계가 아니었다. 인쇄소의 종이가 습도로 뒤틀려서 만들었다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">17</td><td class="ep">쇼핑카트</td><td>발명은 끝났는데 아무도 쓰지 않았다. 수요 자체를 만들어내야 했다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">18</td><td class="ep">신호등</td><td>세계 최초의 신호등은 가스등이었고, 폭발해서 조작하던 경관이 다쳤다.</td><td><span class="tag check">통설</span></td></tr>
+      <tr><td class="n">19</td><td class="ep">볼펜</td><td>잉크가 묽으면 새고, 되면 안 나온다. 고도 1만 미터에서는 둘 다 실패한다.</td><td><span class="tag sure">확실</span></td></tr>
+      <tr><td class="n">20</td><td class="ep">마취</td><td>마취 기체는 이미 있었다. 40년간 파티 놀이로만 쓰였고, 그동안 수술은 맨정신이었다.</td><td><span class="tag sure">확실</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note warn">
+    <span class="klabel">팩트체크가 제작량의 절반이다</span>
+    <p>이 포맷은 수치를 계속 던지는 구조라 하나만 틀려도 댓글에서 즉시 잡힌다. 편당 최소 3개의 독립된 출처(특허 원문, 당대 신문, 학술 문헌)로 교차 검증하고, 통설로 표시된 항목은 “~라고 알려져 있습니다”로 단정을 피한다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">07</span><h2>1화 대본 — 「48년 동안 열 수 없었던 깡통」</h2></div>
+  <div class="col">
+    <p>훅 3축 중 <strong>시간 낙차</strong>와 <strong>편재성</strong>에 동시에 걸리고, 딜레마가 유치원생도 이해할 만큼 단순하다. 비주얼도 절단면·매크로·시대 장면으로 전부 AI 강점 구간이다. 1화로 이보다 안전한 소재가 없다.</p>
+  </div>
+
+  <div class="spec">
+    <div><span class="klabel">목표 길이</span><dd>8:45</dd></div>
+    <div><span class="klabel">AI 영상 클립</span><dd>14개</dd></div>
+    <div><span class="klabel">총 컷</span><dd>약 195</dd></div>
+    <div><span class="klabel">미드롤</span><dd>3개</dd></div>
+  </div>
+
+  <div class="script">
+
+    <div class="beat">
+      <div class="beathead"><span class="t">0:00 – 0:20</span><span class="role">훅 · 상식 전복</span></div>
+      <p class="vo">지금 여러분의 주방에도 하나쯤은 있을 겁니다. 뚜껑을 따고, 안에 든 걸 꺼내고, 버리는. <em>3초면 끝나는 일입니다.</em> 그런데 인류는 이 깡통을 여는 방법을 알아내는 데 <em>48년이 걸렸습니다.</em> 그동안 사람들은 이걸 총검으로 찔렀고, 돌로 내리쳤고, 총으로 쐈습니다.</p>
+      <p class="viz"><b>Viz</b> 밝은 중성 배경의 주방 선반, 통조림 하나에만 강한 측광과 깊은 그림자, 얕은 심도 랙 포커스 → 원터치 뚜껑이 열리는 3초 매크로 → 하드컷 → 1800년대 야전, 총검으로 깡통을 찌르는 손(무인물: 손만, 얼굴 없음) → 숫자 카드 “48”이 화면을 채움</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">0:20 – 0:50</span><span class="role">문제 정의</span></div>
+      <p class="vo">이 물건의 문제는 딱 한 줄로 요약됩니다. <em>여는 걸 아무도 생각하지 않았다.</em> 음식을 몇 년이고 상하지 않게 보관하는 기술은 완성됐습니다. 인류 역사상 최초로요. 그런데 그걸 다시 꺼내는 방법은, 아무도 설계하지 않았습니다.</p>
+      <p class="viz"><b>Viz</b> 밝은 중성 배경, 통조림 단면 도면이 앰버 선으로 그려짐 → 밀봉부에 치수선과 화살표 → 도면에서 “여는 방법” 영역만 비어 있음 (클립 내 생성)</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">0:50 – 2:10</span><span class="role">1막 · 이게 없던 세상</span></div>
+      <p class="vo">1795년, 프랑스. 당시 군대에서 전투로 죽는 병사보다 <em>굶거나 상한 음식으로 죽는 병사가 더 많았습니다.</em> 정부는 상금을 걸었습니다. 음식을 오래 보존하는 방법을 찾아내는 사람에게 1만 2천 프랑. 지금 돈으로 수억 원입니다. … 15년 뒤, 니콜라 아페르라는 제과사가 답을 들고 나타납니다. 유리병에 음식을 넣고, 코르크로 막고, 끓는 물에 통째로 넣는다. 그게 전부였습니다. 그리고 이게 작동했습니다. <em>그런데 아페르는 왜 되는지 몰랐습니다.</em> 세균이라는 개념이 세상에 나오기 50년 전이었으니까요.</p>
+      <p class="viz"><b>Viz</b> 18세기 유럽 항구, 탈색된 카키 톤 트래킹 숏(AI 클립) → 나무통 속 부패한 염장육 테이블톱 매크로 → 상금 공고문 텍스트 카드, 금액 게이지 상승 → 아페르 공방: 유리병·코르크·끓는 물 오빗 숏(AI 클립) → 유리병 단면, 열이 내부로 퍼지는 흐름선 → 연표 바: 1795 / 1810 / 1861(파스퇴르)</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">2:10</span><span class="role">미드롤 ①</span></div>
+      <p class="viz"><b>배치</b> 아래 훅 직전. 컷 전환 없이 바로 이어지도록 편집점 정리.</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">2:15 – 2:35</span><span class="role">훅 2 · 1차 딜레마</span></div>
+      <p class="vo">문제는 유리였습니다. 유리병은 마차에 실으면 깨지고, 전장에 가져가면 산산조각 납니다. <em>보존은 되는데, 운반이 안 됩니다.</em> 답은 금속이었습니다. 그리고 여기서부터 48년이 시작됩니다.</p>
+      <p class="viz"><b>Viz</b> 유리병이 흔들리는 마차 짐칸에서 깨지는 슬로우(AI 클립) → 파편 매크로 → 금속판으로 하드컷, 표면 질감 랙 포커스</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">2:35 – 4:30</span><span class="role">2막 · 1차 해결과 그 대가</span></div>
+      <p class="vo">1810년, 영국의 피터 듀랜드가 주석을 입힌 철통에 대한 특허를 받습니다. 깨지지 않고, 가볍고, 가공하기 쉽다. 완벽해 보였습니다. … 다만 그 시절 철판은 지금과 달랐습니다. <em>통 하나의 두께가 5밀리미터.</em> 안에 든 고기보다 통이 더 무거운 경우도 있었습니다. 영국 해군에 납품된 초기 통조림 뚜껑에는 이런 문구가 적혀 있었습니다. <em>“끌과 망치를 사용해 가장자리를 따라 여시오.”</em> 사용 설명서가 아니라 공사 지침에 가깝습니다.</p>
+      <p class="viz"><b>Viz</b> 듀랜드 특허 도면(퍼블릭 도메인) 줌인 → 철판이 말려 통이 되는 공정 오빗(AI 클립) → 통 벽 단면, 5mm 치수선 오버레이 → 저울 위 통 vs 내용물 무게 비교 그래픽 → 실제 문구 텍스트 카드, 타이핑 모션 → 망치와 끌로 깡통을 여는 손 매크로(AI 클립)</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">4:30</span><span class="role">미드롤 ②</span></div>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">4:35 – 4:55</span><span class="role">훅 3 · 2차 딜레마</span></div>
+      <p class="vo">여기서 이상한 일이 벌어집니다. 통조림은 날개 돋친 듯 팔렸습니다. 군대가 샀고, 탐험대가 샀고, 곧 일반 가정도 샀습니다. <em>그런데 48년 동안, 아무도 따개를 만들지 않았습니다.</em> 왜였을까요.</p>
+      <p class="viz"><b>Viz</b> 통조림 생산량 상승 그래프(1813→1855) → 그래프 옆 “따개: 0” 카드가 정지된 채 유지 → 검은 화면 짧은 정적</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">4:55 – 6:50</span><span class="role">3막 · 진짜 해결 (3단계)</span></div>
+      <p class="vo">이유는 세 가지였습니다. <em>첫째, 통이 너무 두꺼웠습니다.</em> 5밀리 철판을 얇은 도구로 뚫는 건 물리적으로 불가능했습니다. 도구가 먼저 부러집니다. … <em>둘째, 초기 고객이 군대였습니다.</em> 병사에게는 이미 총검이 있었습니다. 따로 도구를 줄 이유가 없었죠. … <em>셋째, 철판이 얇아지기를 기다려야 했습니다.</em> 제강 기술이 발전해 통 두께가 절반 이하로 떨어진 뒤에야, 비로소 “날로 뚫어서 밀고 나간다”는 발상이 가능해집니다. 1858년, 미국의 에즈라 워너가 첫 깡통따개 특허를 받습니다. 생긴 건 총검과 낫을 합쳐놓은 흉기 같았고, 실제로 위험했습니다. 12년 뒤 윌리엄 라이먼이 <em>날을 굴린다</em>는 아이디어를 내놓습니다. 뚫는 게 아니라 굴러가며 자르는 것. 지금 여러분 서랍에 있는 따개의 원리가 이때 완성됩니다.</p>
+      <p class="viz"><b>Viz</b> 넘버링 숫자 카드 “1 두께 / 2 총검 / 3 기다림” → 철판 두께 감소 애니메이션, 치수선 5mm→2mm → 워너 특허 도면(퍼블릭 도메인) → 워너식 따개가 통을 찢고 나가는 매크로 슬로우(AI 클립) → 라이먼 회전날 단면, 날이 굴러가는 앰버 궤적선 → 현대 따개 오빗 숏, 같은 궤적선 겹침</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">6:50</span><span class="role">미드롤 ③</span></div>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">6:55 – 8:00</span><span class="role">4막 · 확산과 유산</span></div>
+      <p class="vo">그리고 지금, 전 세계에서 <em>1년에 수천억 개</em>의 통조림이 열립니다. 통조림은 도시를 바꿨습니다. 항구에서 먼 내륙 도시가 생선을 먹기 시작했고, 겨울에도 채소를 먹게 됐고, 군대는 보급선에서 해방됐습니다. <em>인류가 처음으로 계절과 거리에서 벗어난 순간이었습니다.</em> 그 시작이 “왜 되는지 모르지만 되는” 유리병 하나였고, 48년 동안 열 수 없는 쇳덩어리였습니다.</p>
+      <p class="viz"><b>Viz</b> 세계 지도 위 통조림 교역로가 뻗어나가는 모션 → 내륙 도시 시장 트래킹(AI 클립, 카키 톤) → 연간 생산량 카운터 상승 → 현대 마트 통조림 진열대 오빗(AI 클립, 중성 백색으로 전환, 사람 없음)</p>
+    </div>
+
+    <div class="beat">
+      <div class="beathead"><span class="t">8:00 – 8:45</span><span class="role">수미상관 · 통찰</span></div>
+      <p class="vo">영상 맨 처음에 봤던 그 3초. 뚜껑을 따는 그 동작은 편리하라고 만든 게 아닙니다. <em>48년 동안 아무도 풀지 못한 문제의 답입니다.</em> 우리는 대부분의 물건을 이렇게 씁니다. <em>답만 받아 들고, 문제가 뭐였는지는 모른 채로.</em></p>
+      <p class="viz"><b>Viz</b> 0:00의 원터치 뚜껑 3초 매크로를 그대로 재생, 이번엔 앰버 궤적선 오버레이 → 화면에서 궤적선만 사라짐 → 채널 로고 2초 → 끝</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">08</span><h2>발행 전 체크리스트</h2></div>
+  <ul class="clean">
+    <li><strong>길이 8:30 이상</strong> — 미드롤 3개 수동 배치, 자동 배치 해제.</li>
+    <li><strong>AI 콘텐츠 공개</strong> — 실사처럼 보이는 합성 영상은 업로드 시 “변경되거나 합성된 콘텐츠” 항목을 체크한다. 누락은 정책 위반이다.</li>
+    <li><strong>저작권</strong> — 특허 도면과 시대 사진은 퍼블릭 도메인 여부를 건별로 확인. 불확실하면 쓰지 않는다.</li>
+    <li><strong>팩트 3중 확인</strong> — 화면에 뜬 모든 숫자에 대해 출처 메모를 남긴다. 통설은 단정하지 않는다.</li>
+    <li><strong>무음 테스트</strong> — 소리를 끄고 한 번 본다. 핵심 수치가 화면에 없으면 카드를 추가한다.</li>
+    <li><strong>썸네일</strong> — 본편 클립에서 프레임을 뽑아 만든다. 훅 3축 중 하나를 문구로, 사람 얼굴 없이 사물 하나와 큰 숫자. <strong>본편에 없는 그림을 썸네일로 쓰지 않는다</strong> — 낚시로 읽히고 이탈을 부른다.</li>
+    <li><strong>다국어</strong> — 채널 복제 금지. 한 영상에 한국어·영어 오디오 트랙을 함께 올려 조회수를 합산시킨다. 제목·설명도 언어별로 등록한다.</li>
+  </ul>
+</section>
+
+
+<section>
+  <div class="shead"><span class="snum">09</span><h2>제작 파이프라인 — 클로드 + 힉스필드</h2></div>
+  <div class="col">
+    <p>벤치마크 파이프라인(코덱스 + 구글 플로우 + 타입캐스트 + 캡컷)의 <strong>기법은 그대로 쓰고 도구만 대체</strong>한다. 도구 수가 넷에서 둘로 줄고, 파일 수동 넘버링과 타임라인 드래그가 사라진다.</p>
+  </div>
+
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>역할</th><th>벤치마크</th><th>우리 스택</th><th>차이</th></tr></thead>
+    <tbody>
+      <tr><td>대본·컷 분할·프롬프트 도출</td><td>Codex</td><td class="ep">Claude</td><td>대본 작성까지 같은 세션에서 처리</td></tr>
+      <tr><td>이미지·영상 렌더링</td><td>Google Flow</td><td class="ep">Higgsfield MCP</td><td>배치 호출로 수십 장을 한 번에 큐잉</td></tr>
+      <tr><td>나레이션</td><td>Typecast</td><td class="ep">Higgsfield generate_audio</td><td>툴 하나 제거. VO가 같은 파이프라인 안에 남음</td></tr>
+      <tr><td>파일 넘버링</td><td>Codex 리네이밍</td><td class="ep">불필요</td><td>생성 시점에 컷 번호로 명명</td></tr>
+      <tr><td>조립</td><td>CapCut 수동</td><td class="ep">ffmpeg 스크립트</td><td>싱크·자막·믹스 자동. 미세 수정만 수동</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>확정 — 생성 모델은 하나</h3>
+  <div class="col">
+    <p>화면에 들어가는 모든 영상과 스틸을 <strong>단일 영상 모델</strong>로 만든다. 이미지 모델은 영상에 쓰지 않는다(썸네일 제작에만 별도로 쓴다 — 영상 밖이라 톤 문제가 없다).</p>
+  </div>
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>용도</th><th>모델</th><th>설정</th></tr></thead>
+    <tbody>
+      <tr><td>영상 전량 · 스틸 원본</td><td class="ep">gemini_omni_flash_1_1</td><td>mode <code>text-to-video</code> / 16:9 / 8초 / 720p~4K</td></tr>
+      <tr><td>썸네일</td><td class="ep">생성하지 않음</td><td>본편 클립에서 프레임 추출 → 업스케일 → 문구 오버레이</td></tr>
+      <tr><td>이미지 모델</td><td class="ep">사용하지 않음</td><td>로고·채널아트만 개국 시 예외로 검토</td></tr>
+      <tr><td>영어 VO</td><td class="ep">generate_audio</td><td>프리셋 보이스 고정</td></tr>
+      <tr><td>한국어 VO</td><td class="ep">타입캐스트</td><td>힉스필드 프리셋과 비교 후 확정</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <span class="klabel">모델은 하나로 확정</span>
+    <p>영상은 <code>gemini_omni_flash_1_1</code>(Veo Omni 계열) 하나만 쓴다. 이미지 생성 모델은 쓰지 않는다. <strong>채널 수명 내내 바꾸지 않는다</strong> — 중간에 바꾸면 과거 영상과 톤이 갈라진다.</p>
+  </div>
+
+  <div class="note">
+    <span class="klabel">이미지 모델을 거의 쓰지 않는 이유</span>
+    <p>화면에 들어가는 그림을 한 모델로 통일하기로 한 이상, 이미지 생성이 남는 자리는 썸네일뿐이다. 그런데 썸네일도 <strong>본편 프레임을 뽑아 쓰는 편이 낫다</strong> — 생성 비용이 0이고, 톤이 본편과 일치하며, 썸네일에 있는 장면이 영상에 실제로 나오므로 낚시로 읽히지 않는다.</p>
+    <p>프레임으로 도저히 안 되는 편에서만 <code>gpt_image_2_5</code>로 만들되, <strong>그 편의 프레임을 레퍼런스로 반드시 넣어</strong> 톤을 묶는다. 썸네일 한글 문구는 모델에 맡기지 않고 오버레이로 얹는다.</p>
+  </div>
+
+  <h3>제작 흐름</h3>
+  <div class="pipe">
+    <div class="stage">
+      <span class="sn">생성</span>
+      <span class="sb">
+        <strong>멀티샷 클립만 만든다</strong>
+        <p>한 클립(10~12초) 안에 서브컷 3~5개를 지정한다. 계측 요소가 필요한 컷은 프롬프트에 직접 쓴다 — “thin amber dimension line across the wall, scale bar lower left”.</p>
+        <span class="code"><b>generate_video_batch</b>
+  model: <i>kling3_0</i>
+  aspect_ratio: <i>16:9</i>  duration: <i>12</i>
+  mode: <i>pro</i>  sound: <i>off</i></span>
+      </span>
+    </div>
+    <div class="stage">
+      <span class="sn">추출</span>
+      <span class="sb">
+        <strong>스틸은 뽑아 쓴다</strong>
+        <p>완성된 클립에서 필요한 프레임을 ffmpeg으로 추출해 줌/팬 컷으로 쓴다. 생성 비용 0, 톤 일치 100%. 스틸용 이미지 생성은 하지 않는다.</p>
+        <span class="code">ffmpeg -ss <i>3.4</i> -i clip_07.mp4 -frames:v 1 still_07a.png</span>
+      </span>
+    </div>
+    <div class="stage">
+      <span class="sn">숫자</span>
+      <span class="sb">
+        <strong>정확한 수치는 오버레이가 책임진다</strong>
+        <p>모델이 그린 숫자는 장식으로만 취급한다. 시청자가 읽어야 하는 값(48, 5 mm, 1810)은 <strong>고정 템플릿에 값만 주입해</strong> 조립 단계에서 얹는다. 모델이 틀린 숫자를 그린 컷은 재생성 1회, 그래도 틀리면 그 부분을 화면에서 지우고 나레이션이 맡는다.</p>
+      </span>
+    </div>
+  </div>
+
+  <h3>씬 프롬프트 템플릿 — 8초 2비트</h3>
+  <div class="col">
+    <p>한 씬은 8초, 비트 2개. <strong>공통 룩 블록 → 비트 A(횡이동) → 비트 B(급속 푸시인) → 금지 항목</strong> 순으로 쓴다. 공통 룩 블록은 전 편 고정이므로 그대로 복사한다 — 이 블록이 채널 톤을 잡는 유일한 장치다.</p>
+  </div>
+
+  <div class="ptpl">
+    <span class="klabel">공통 룩 블록 — 전 편 고정</span>
+    <q>Photorealistic documentary, bright neutral gallery-grey ground, single strong directional key light with deep shadows on the subject, tabletop scale, shallow depth of field, 50mm, faint paper-and-blueprint grid in the background layer. No people, no aerial or crane shots, no Korean text.</q>
+  </div>
+
+  <div class="ptpl">
+    <span class="klabel">비트 블록 — 씬마다 새로 씀 (8초 / 2비트)</span>
+    <q>Beat A (0–5s): slow turntable orbit around a single thick wrought-iron food can on a worn wooden crate, dust drifting through the light; measurement lines and a scale bar annotate the can wall as the camera moves.<br><br>Beat B (5–8s): vertical top-down of the sealed lid, rack focus from rim to centre, motion settling on the last frame.</q>
+    <p style="font-size:12.5px;color:var(--ink2);margin:10px 0 0">비트 조합은 씬 내용이 정한다. 오빗 → 탑다운, 매크로 → 랙 포커스, 횡이동 → 클로즈업 등 어떤 쌍도 가능하다.</p>
+  </div>
+
+  <div class="note">
+    <span class="klabel">계측 요소는 모델에 맡긴다</span>
+    <p>치수선·보조선·게이지의 <strong>색과 숫자를 프롬프트로 지정하지 않는다.</strong> 화면에 뜨는 수치가 정확하지 않아도 그대로 진행한다 — 생성 속도를 우선한 결정이다.</p>
+    <p>사실 전달은 <strong>나레이션이 책임진다.</strong> 규칙 1의 팩트체크는 대본에 그대로 적용되므로 시청자가 <em>듣는</em> 정보는 검증된 값이다. 화면의 계측 요소는 장면의 질감으로 취급한다.</p>
+  </div>
+
+  <h3>편당 실행 순서</h3>
+  <div class="pipe">
+    <div class="stage"><span class="sn">01</span><span class="sb"><strong>대본 확정 → 컷 시트 자동 산출</strong><p>VO 총 길이(목표 8:45)를 기준으로 컷 수와 컷별 길이를 계산하고, 클립 단위로 묶어 멀티샷 프롬프트를 한 번에 도출한다.</p></span></div>
+    <div class="stage"><span class="sn">02</span><span class="sb"><strong>한국어 VO 먼저 생성</strong><p>VO를 먼저 만들어 실제 길이를 확정한 뒤 컷 길이를 맞춘다. 영상부터 만들면 반드시 어긋난다. 영어 VO는 조립 직전 단계에서 블록 길이에 맞춰 따로 만든다.</p></span></div>
+    <div class="stage"><span class="sn">03</span><span class="sb"><strong>8초 씬 일괄 생성</strong><p>배치로 큐잉. 8분 45초 기준 약 50씬. 실패한 씬만 재생성한다. <strong>생성 전 크레딧 사용 승인을 받는다.</strong></p></span></div>
+    <div class="stage"><span class="sn">04</span><span class="sb"><strong>스틸 프레임 추출</strong><p>줌/팬으로 쓸 프레임을 클립에서 뽑는다. 추가 생성 없음.</p></span></div>
+    <div class="stage"><span class="sn">05</span><span class="sb"><strong>텍스트·숫자 카드 자동 생성</strong><p>훅 숫자, 넘버링 카드 등 구조용 카드만. 템플릿에 값만 주입한다.</p></span></div>
+    <div class="stage"><span class="sn">06</span><span class="sb"><strong>ffmpeg 조립 — 컷 전환은 문장 끝에</strong><p>다운로드 → 컷 번호순 인코딩 → VO 싱크 → 수치 오버레이 → SRT 생성까지 스크립트 한 번으로. <strong>컷 전환점은 나레이션 문장이 끝나는 지점에 맞춘다.</strong> 말이 이어지는 도중에 화면이 바뀌면 흐름이 끊긴다. VO의 문장 경계를 읽어 전환점을 자동 정렬한다.</p></span></div>
+    <div class="stage"><span class="sn">07</span><span class="sb"><strong>최종 확인은 사람이</strong><p>무음 재생 1회, 배속 없이 1회. 어색한 컷만 교체 생성한다.</p></span></div>
+  </div>
+
+  <h3>나레이션 보이스</h3>
+  <div class="col">
+    <p>힉스필드 프리셋 보이스는 전부 영문 이름이지만 한국어 합성이 가능하다. 다만 <strong>프리셋마다 한국어 품질 편차가 크므로</strong> 1화 제작 전에 같은 문장으로 비교 생성해 고정한다. 저음 다큐 톤 후보 — <strong>Grady / Holden / Arthur / Desmond / Reid</strong>. 한 번 정하면 채널 수명 내내 바꾸지 않는다.</p>
+  </div>
+
+  <div class="note">
+    <span class="klabel">쓰지 않는 것</span>
+    <p>힉스필드에 <strong>faceless-video</strong> 워크플로가 있지만 비(非)포토리얼 스타일을 고정하는 구조라 이 채널의 다큐 톤과 맞지 않는다. 생성 도구를 직접 호출하는 위 방식이 맞다.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="shead"><span class="snum">10</span><h2>이중 언어 운영 — 한국어 원본 + 영어 트랙</h2></div>
+  <div class="col">
+    <p>별도 영어 채널을 만들지 않는다. <strong>같은 영상에 오디오 트랙을 두 개 올린다.</strong> 한국어 시장의 열린 창을 잡으면서 영어권 시청자도 흡수하고, 조회수가 한 영상에 합산돼 알고리즘 신호가 분산되지 않는다. 채널 복제로 인한 반복 콘텐츠 리스크도 없다.</p>
+    <p class="lede">근거는 하나다. <strong>비주얼 자산에는 언어가 없다.</strong> 제작비의 대부분인 이미지·영상 클립은 양쪽 언어에 그대로 쓰인다. 영어판의 한계비용은 대본과 나레이션뿐이다.</p>
+  </div>
+
+  <div class="spec">
+    <div><span class="klabel">원본</span><dd>한국어</dd><small>대본·기획·편집의 기준. 모든 타이밍이 여기서 확정된다.</small></div>
+    <div><span class="klabel">추가 트랙</span><dd>영어</dd><small>번역이 아니라 블록 길이에 맞춘 재작성.</small></div>
+    <div><span class="klabel">영상</span><dd>1개</dd><small>양 언어 공용. 그래서 화면 텍스트 규칙이 바뀐다.</small></div>
+    <div><span class="klabel">채널</span><dd>1개</dd><small>복제 채널을 만들지 않는다.</small></div>
+  </div>
+
+  <h3>규칙 1 — 화면에 굽는 텍스트는 언어 중립으로</h3>
+  <div class="col">
+    <p>영상이 하나이므로 번인된 한글은 영어권 시청자에게도 그대로 노출된다. 그래서 화면 텍스트를 아래로 제한한다.</p>
+  </div>
+  <ul class="clean">
+    <li><strong>허용</strong> — 숫자(48, 5 mm, 1810), 단위, 치수선, 게이지, 지도, 영문 라벨(WALL THICKNESS, 1858)</li>
+    <li><strong>금지</strong> — 한글 문장, 한글 설명 카드, 한글 키워드 강조 자막</li>
+    <li><strong>대체</strong> — 한글로 전달할 내용은 전부 나레이션이 맡는다. 무음 시청자용 보완은 유튜브 자막(CC)으로, 언어별로 각각 올린다</li>
+  </ul>
+  <div class="col">
+    <p style="font-size:14px;color:var(--ink2)">부수 효과가 있다. 화면에서 한글이 빠지면 생성 모델이 못 그리는 문자가 사라져 클립 성공률이 올라간다.</p>
+  </div>
+
+  <h3>규칙 2 — 영어 대본은 번역하지 않는다</h3>
+  <div class="col">
+    <p>문장 단위로 번역하면 번역체가 되고, 길이도 어긋난다. 한국어를 영어로 옮기면 <strong>발화 시간이 통상 10~20% 늘어난다.</strong> 문장마다 맞추려 들면 컷과 전부 틀어진다.</p>
+    <p>대신 <strong>블록 단위로 맞춘다.</strong> 서사 구조의 각 구간(훅 20초, 1막 80초, 2막 115초…)을 목표 시간으로 두고, 그 안에서 영어로 자연스럽게 다시 쓴다. 블록 경계만 맞으면 컷은 어긋나지 않는다.</p>
+  </div>
+  <div class="note">
+    <span class="klabel">블록 싱크 허용 오차</span>
+    <p>블록당 ±1.5초. 초과하면 영어 문장을 줄이지 말고 해당 블록의 스틸 컷 길이를 0.2초씩 조정해 흡수한다. 미드롤 지점은 양 언어에서 같은 위치여야 하므로 절대 어긋나면 안 된다.</p>
+  </div>
+
+  <h3>규칙 3 — 보이스는 언어별로 다른 곳에서</h3>
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>트랙</th><th>생성</th><th>이유</th></tr></thead>
+    <tbody>
+      <tr><td class="ep">한국어</td><td>타입캐스트 (또는 힉스필드 프리셋 비교 후 선택)</td><td>한국어 전용 서비스가 발음·끊어 읽기에서 안정적. 비교 테스트로 확정한다.</td></tr>
+      <tr><td class="ep">영어</td><td>힉스필드 generate_audio 프리셋</td><td>프리셋이 영어 네이티브라 품질 문제가 없다. Grady / Holden / Arthur / Desmond / Reid 중 저음 다큐 톤으로 고정.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="col">
+    <p>두 목소리의 <strong>톤은 맞추되 같을 필요는 없다.</strong> 시청자는 한쪽만 듣는다. 각 언어에서 가장 신뢰감 있는 목소리를 고르는 게 맞다.</p>
+  </div>
+
+  <h3>규칙 4 — 메타데이터도 언어별로</h3>
+  <ul class="clean">
+    <li>제목·설명을 언어별로 등록한다. 유튜브가 시청자 언어에 맞춰 표시한다</li>
+    <li>영어 제목은 한국어 제목의 번역이 아니라 <strong>영어 훅으로 새로 쓴다</strong>. 후보를 여러 개 놓고 비교해 고른다</li>
+    <li>자막(CC)은 언어별로 각각 업로드. 자동 번역에 맡기지 않는다</li>
+    <li>썸네일은 하나만 쓸 수 있으므로 <strong>문구를 숫자 중심으로</strong> 설계한다 — 48, 1810 같은 숫자는 번역이 필요 없다</li>
+  </ul>
+
+  <h3>20화 이후의 갈림길</h3>
+  <div class="col">
+    <p>오디오 트랙은 저비용 헤지이지 완전한 대체가 아니다. <strong>영어권 추천 피드 노출에서는 영어 메타데이터로 운영되는 전용 채널이 더 강하다.</strong> 20화 시점에 영어 트랙의 시청 시간 비중을 확인하고, 의미 있게 나오면 전용 영어 채널을 연다.</p>
+    <p>그때 비주얼 자산은 전부 재활용하되 <strong>대본은 영어로 새로 쓴다.</strong> 제작비의 8할이 이미 지불된 상태라 리스크가 거의 없는 확장이 된다.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="shead"><span class="snum">11</span><h2>쇼츠 라인과 자동화</h2></div>
+
+  <h3>쇼츠는 별도 파이프라인으로</h3>
+  <div class="col">
+    <p>쇼츠는 롱폼의 유입 깔때기이자, 롱폼 정체성을 지키면서 클릭률 높은 소재를 소화하는 자리다. 여기서는 <strong>완성도보다 발행 속도가 우선</strong>이므로 롱폼과 규칙을 분리한다.</p>
+  </div>
+  <div class="tscroll">
+  <table>
+    <thead><tr><th></th><th>롱폼</th><th>쇼츠</th></tr></thead>
+    <tbody>
+      <tr><td class="ep">소재</td><td>사물의 기원 (순수 유지)</td><td>가정형 질문 — “추락하는 엘리베이터에서 점프하면?”</td></tr>
+      <tr><td class="ep">씬 길이</td><td>8초 2비트</td><td>8초 2비트</td></tr>
+      <tr><td class="ep">비율</td><td>16:9</td><td>9:16</td></tr>
+      <tr><td class="ep">자막</td><td>키워드만, 한글 번인 금지</td><td>풀 자막 허용 (한국어 쇼츠 한정)</td></tr>
+      <tr><td class="ep">완성도</td><td>수치 오류 = 폐기</td><td>미세 오류는 넘어간다</td></tr>
+      <tr><td class="ep">빈도</td><td>주 2 – 3편</td><td>주 5편 이상</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="col">
+    <p style="font-size:14px;color:var(--ink2)">쇼츠에 한글 풀 자막을 허용하는 이유 — 쇼츠는 영어 트랙을 붙이지 않고 한국어 전용으로 운영한다. 영어권 쇼츠는 별도 편성으로 판단한다.</p>
+  </div>
+
+  <h3>원스톱 자동화 — 저장소에 스킬로 굳힌다</h3>
+  <div class="col">
+    <p>매번 대본 규칙과 프롬프트 템플릿을 다시 설명하는 대신, 이 설계서의 규칙을 저장소 안의 에이전트 지침으로 고정한다. 그러면 소재 이름 하나로 아래가 한 번에 나온다.</p>
+  </div>
+  <div class="pipe">
+    <div class="stage"><span class="sn">입력</span><span class="sb"><strong>“주제: 통조림”</strong></span></div>
+    <div class="stage"><span class="sn">출력</span><span class="sb"><strong>대본 → 팩트체크 표 → 컷 시트 → 프롬프트 전량</strong><p>8분 45초 기준 씬 분할, 씬별 8초 2비트 프롬프트(영문 코드블록), 설정 표, VO 글자수, 숫자 카드 값 목록, 팩트체크 표, 그리고 대본의 부족한 점 목록까지.</p></span></div>
+  </div>
+  <div class="col">
+    <p>프롬프트는 <strong>영문 코드 블록</strong>으로 출력해 그대로 복사·전달할 수 있게 한다. 한 번 만들어 두면 2화부터는 소재 이름만 바꾸면 된다.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="shead"><span class="snum">12</span><h2>작업 규칙 — 매 편 적용</h2></div>
+  <div class="col">
+    <p>아래 넷은 편마다 예외 없이 적용한다. 자동화 스킬에도 그대로 들어간다.</p>
+  </div>
+
+  <div class="pipe">
+    <div class="stage">
+      <span class="sn">규칙 1</span>
+      <span class="sb">
+        <strong>대본을 쓴 다음 반드시 자기 검토와 팩트체크를 붙인다</strong>
+        <p>대본만 넘기지 않는다. 두 가지를 함께 낸다.</p>
+        <p><strong>부족한 점 목록</strong> — 훅이 약한 구간, 근거가 빈 주장, 늘어지는 막, 딜레마가 선명하지 않은 지점, 미드롤 위치가 어색한 곳.</p>
+        <p><strong>팩트체크 표</strong> — 대본에 등장하는 모든 연도·수치·고유명사를 행으로 놓고, 확신도(확실 / 통설 / 미확인)와 확인해야 할 출처를 적는다. 미확인 항목이 하나라도 남으면 제작에 들어가지 않는다.</p>
+      </span>
+    </div>
+
+    <div class="stage">
+      <span class="sn">규칙 2</span>
+      <span class="sb">
+        <strong>씬 규격 — 8초 2비트</strong>
+        <p>모델은 <code>gemini_omni_flash_1_1</code> 하나. 한 씬 8초, 비트 최대 2개.</p>
+        <p>카메라는 테이블톱 문법(오빗·탑다운·매크로·랙 포커스·횡이동) 안에서 씬 내용에 맞게 고른다. 고정 공식은 쓰지 않는다. 항공 부감과 크레인은 쓰지 않는다.</p>
+        <p>계측선·보조선의 <strong>수치와 색상은 지정하지 않고 모델에 맡긴다. 화면 수치가 틀려도 그대로 진행한다.</strong></p>
+      </span>
+    </div>
+
+    <div class="stage">
+      <span class="sn">규칙 3</span>
+      <span class="sb">
+        <strong>출력 형식 — 네 덩어리 + 위험 고지</strong>
+        <p>제작물은 항상 ① <strong>한국어 설명</strong> ② <strong>영문 코드블록</strong>(그대로 복사해 넣는 프롬프트) ③ <strong>설정 표</strong>(모델·비율·길이·해상도·오디오) ④ <strong>글자수</strong>(VO 기준, 예상 발화 시간 함께)로 낸다.</p>
+        <p>그리고 넘기기 전에 <strong>기존 규칙과 충돌하는 지점을 먼저 점검해 위험도와 함께 알린다.</strong> 문제를 뒤늦게 발견하는 것보다 시작 전에 아는 편이 싸다.</p>
+      </span>
+    </div>
+
+    <div class="stage">
+      <span class="sn">규칙 4</span>
+      <span class="sb">
+        <strong>크레딧은 승인 없이 쓰지 않는다</strong>
+        <p>힉스필드 생성 호출은 <strong>매번 사전 승인</strong>을 받는다. 승인 요청에는 무엇을 몇 개 생성하는지, 예상 소모가 얼마인지, 실패 시 재시도 방침이 무엇인지를 함께 적는다. 테스트 1회도 예외가 아니다.</p>
+      </span>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <span class="klabel">규칙 2가 안고 있는 트레이드오프</span>
+    <p><strong>속도</strong> — 8초에 비트 2개면 화면이 4초마다 바뀐다. 목표한 평균 컷 2.2초보다 느리다. 씬을 통째로 쓰지 말고 <strong>좋은 구간만 잘라 쓰고 사이에 추출 스틸 줌 컷을 끼워</strong> 실질 컷 길이를 2~3초로 만든다. 편집이 리듬을 만든다.</p>
+    <p><strong>색 편차</strong> — 계측선 색을 지정하지 않으므로 씬마다 달라질 수 있다. 1화 완성 후 눈으로 확인하고, 거슬리면 공통 룩 블록에 색 한 줄을 추가해 잠근다.</p>
+    <p><strong>화면 수치</strong> — 정확하지 않다. 감수하고 진행한다. 사실은 나레이션이 전달한다.</p>
+  </div>
+</section>
+
+<footer>
+  이 문서는 제작 기준선이다. 1화 공개 후 시청 지속률 그래프를 보고 훅 위치와 미드롤 지점을 조정한 뒤 Rev. 2로 갱신할 것.<br>
+  검증 표기가 <span class="tag check">통설</span>인 항목은 대본 작성 전 반드시 원사료를 확인한다.
+</footer>
+
+</div>
