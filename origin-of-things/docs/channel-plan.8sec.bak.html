@@ -414,10 +414,10 @@ footer{
   </div>
 
   <div class="spec">
-    <div><span class="klabel">영상 길이</span><dd>5 – 10분</dd><small>이야기가 정한다. 길이를 맞추려고 대본을 늘리지 않는다. <strong>★2026-09-15 추가★ 3분 이내로 들어오면 롱폼이 아니라 숏폼으로 만든다</strong> — 아래 §11 「3분 분기」.</small></div>
+    <div><span class="klabel">영상 길이</span><dd>5 – 10분</dd><small>이야기가 정한다. 길이를 맞추려고 대본을 늘리지 않는다.</small></div>
     <div><span class="klabel">업로드</span><dd>주 2 – 3편</dd><small>고정 요일. 빈도보다 간격의 일관성이 중요.</small></div>
     <div><span class="klabel">출연</span><dd>무인물</dd><small>AI 인물 리스크 원천 제거. 사물·구조·지도·텍스트만.</small></div>
-    <div><span class="klabel">씬 길이</span><dd>6초</dd><small>★2026-09-14 변경★ 구 「평균 컷 2.2초 · 약 200컷 · 컷 종류 혼합」은 폐기(K-Reality 방식). <strong>전면 생성 — 1화 71클립</strong>.</small></div>
+    <div><span class="klabel">평균 컷</span><dd>2.2초</dd><small>편당 약 200컷. 컷 종류를 섞어 제작량을 통제한다.</small></div>
   </div>
 </section>
 
@@ -523,20 +523,12 @@ footer{
   <table>
     <thead><tr><th>컷 종류</th><th>비중</th><th>길이</th><th>출처</th></tr></thead>
     <tbody>
-      <tr><td>6초 씬 (2비트)</td><td class="n">100%</td><td class="n">비트당 약 3초</td><td><strong>화면 전 구간을 생성 클립으로 채운다.</strong> 씬당 비트 2개.</td></tr>
-      <tr><td>숫자 오버레이</td><td class="n">폐기</td><td class="n">—</td><td><strong>2026-09-14 폐기.</strong> 후반 작업을 하지 않는다. 화면 숫자는 <strong>모델이 그린다</strong>(스타일 락에서 <code>no numbers</code> 제거). 값이 틀려도 재생성하지 않고 사실은 나레이션이 진다. 단 <strong>기호·글리프는 시키지 않는다</strong> — 모양이 불안정해 클립마다 같은 실수를 산다.</td></tr>
+      <tr><td>8초 씬 (2비트)</td><td class="n">55 – 60%</td><td class="n">비트당 3 – 5초</td><td>단일 영상 모델. 씬당 비트 2개.</td></tr>
+      <tr><td>추출 스틸 + 줌/팬</td><td class="n">20 – 25%</td><td class="n">2 – 3초</td><td><strong>생성한 클립에서 프레임을 뽑아 쓴다.</strong> 추가 생성 없음, 톤 100% 일치.</td></tr>
+      <tr><td>텍스트·숫자 카드</td><td class="n">15 – 20%</td><td class="n">1.5 – 2초</td><td>훅 숫자·넘버링 등 구조용. 템플릿에 값만 주입.</td></tr>
+      <tr><td>퍼블릭 도메인 자료</td><td class="n">5%</td><td class="n">2 – 3초</td><td>특허 도면, 시대 사진. 출처 표기 필수.</td></tr>
     </tbody>
   </table>
-  </div>
-
-  <div class="note warn">
-    <span class="klabel">★2026-09-14 변경 — 컷 구성비를 폐기하고 「전면 생성」으로 간다★</span>
-    구 표는 <strong>추출 스틸 20–25% · 텍스트 카드 15–20% · 퍼블릭 도메인 5%</strong>로 화면의 40%를
-    생성 클립 «밖»에서 채우는 구성이었다. 이는 <strong>K-Reality 제작 방식의 잔재</strong>이며
-    이 채널에는 적용하지 않는다. <strong>화면 전 구간을 6초 생성 클립으로 채운다</strong>
-    (1화 기준 <strong>71클립</strong>). 「씬을 통째로 쓰지 말고 잘라 쓰라」는 구 속도 규칙도 함께 폐기한다.
-    <br>⚠️ 대가는 <strong>원가</strong>다 — 힉스필드 <code>gemini_omni_flash_1_1</code>은 3크레딧/초라
-    71클립 × 6초 ≈ <strong>1,278크레딧</strong>이다. 생성 도구 결정이 선행되어야 한다.
   </div>
 
   <div class="note warn">
@@ -552,7 +544,7 @@ footer{
     <li><strong>그라운드 — 어둡지 않고 밝다.</strong> 미술관 전시실 벽 같은 중성 회백을 기본 배경으로 두고, 사물에만 강한 방향광과 깊은 그림자를 준다. 밝지만 콘트라스트가 센 화면. 어두운 화면으로 무게를 만드는 방식과 정반대 지점이다.</li>
     <li><strong>시간 색 코드 — 이 채널의 서명.</strong> 과거 구간은 탈색된 카키·시안(오래된 컬러 필름), 현재 구간은 중성 백색에 차가운 하이라이트. <strong>서사가 시대를 옮길 때 화면 색이 함께 바뀐다.</strong> 훅의 “시간 낙차” 축을 시각으로 그대로 옮긴 장치라 우리 채널에만 성립한다.</li>
     <li><strong>계측선·보조선 — 색과 수치는 모델에 맡긴다.</strong> 치수선, 고정·이동 보조선, 게이지의 색상과 숫자를 프롬프트로 지정하지 않는다. 생성 속도를 우선한 결정이다. <strong>대가는 클립마다 색이 달라질 수 있다는 것</strong>이므로, 1화 완성 후 실제 화면을 보고 편차가 거슬리면 그때 한 색으로 잠근다.</li>
-    <li><strong>씬 규격 — 6초 2비트.</strong> 한 씬은 6초, 비트는 최대 2개. 그 이상 쪼개면 모델이 장면을 잃는다.</li>
+    <li><strong>씬 규격 — 8초 2비트.</strong> 한 씬은 8초, 비트는 최대 2개. 그 이상 쪼개면 모델이 장면을 잃는다.</li>
     <li><strong>카메라 — 테이블톱 문법.</strong> 턴테이블 오빗, 수직 탑다운, 테이블톱 매크로, 얕은 심도 랙 포커스, 그리고 필요할 때 횡이동 트래킹. 제품 촬영과 박물관 촬영의 문법이다. <strong>비트 두 개의 조합은 씬 내용이 정한다 — 고정 공식을 쓰지 않는다.</strong></li>
     <li><strong>쓰지 않는 것</strong> — 항공 부감, 크레인 하강. 구조물 채널과 가장 빨리 겹치는 지점이다.</li>
     <li><strong>배경 레이어</strong> — 종이 질감, 특허 도면, 카탈로그 그리드가 은은하게 깔린다. 흙·콘크리트·철골이 아니라 문서와 작업대의 세계.</li>
@@ -762,7 +754,7 @@ footer{
   <table>
     <thead><tr><th>용도</th><th>모델</th><th>설정</th></tr></thead>
     <tbody>
-      <tr><td>영상 전량 · 스틸 원본</td><td class="ep">gemini_omni_flash_1_1</td><td>mode <code>text-to-video</code> / 16:9 / 6초 / 720p~4K</td></tr>
+      <tr><td>영상 전량 · 스틸 원본</td><td class="ep">gemini_omni_flash_1_1</td><td>mode <code>text-to-video</code> / 16:9 / 8초 / 720p~4K</td></tr>
       <tr><td>썸네일</td><td class="ep">생성하지 않음</td><td>본편 클립에서 프레임 추출 → 업스케일 → 문구 오버레이</td></tr>
       <tr><td>이미지 모델</td><td class="ep">사용하지 않음</td><td>로고·채널아트만 개국 시 예외로 검토</td></tr>
       <tr><td>영어 VO</td><td class="ep">generate_audio</td><td>프리셋 보이스 고정</td></tr>
@@ -812,9 +804,9 @@ footer{
     </div>
   </div>
 
-  <h3>씬 프롬프트 템플릿 — 6초 2비트</h3>
+  <h3>씬 프롬프트 템플릿 — 8초 2비트</h3>
   <div class="col">
-    <p>한 씬은 6초, 비트 2개. <strong>공통 룩 블록 → 비트 A(횡이동) → 비트 B(급속 푸시인) → 금지 항목</strong> 순으로 쓴다. 공통 룩 블록은 전 편 고정이므로 그대로 복사한다 — 이 블록이 채널 톤을 잡는 유일한 장치다.</p>
+    <p>한 씬은 8초, 비트 2개. <strong>공통 룩 블록 → 비트 A(횡이동) → 비트 B(급속 푸시인) → 금지 항목</strong> 순으로 쓴다. 공통 룩 블록은 전 편 고정이므로 그대로 복사한다 — 이 블록이 채널 톤을 잡는 유일한 장치다.</p>
   </div>
 
   <div class="ptpl">
@@ -823,7 +815,7 @@ footer{
   </div>
 
   <div class="ptpl">
-    <span class="klabel">비트 블록 — 씬마다 새로 씀 (6초 / 2비트)</span>
+    <span class="klabel">비트 블록 — 씬마다 새로 씀 (8초 / 2비트)</span>
     <q>Beat A (0–5s): slow turntable orbit around a single thick wrought-iron food can on a worn wooden crate, dust drifting through the light; measurement lines and a scale bar annotate the can wall as the camera moves.<br><br>Beat B (5–8s): vertical top-down of the sealed lid, rack focus from rim to centre, motion settling on the last frame.</q>
     <p style="font-size:12.5px;color:var(--ink2);margin:10px 0 0">비트 조합은 씬 내용이 정한다. 오빗 → 탑다운, 매크로 → 랙 포커스, 횡이동 → 클로즈업 등 어떤 쌍도 가능하다.</p>
   </div>
@@ -838,7 +830,7 @@ footer{
   <div class="pipe">
     <div class="stage"><span class="sn">01</span><span class="sb"><strong>대본 확정 → 컷 시트 자동 산출</strong><p>VO 총 길이(목표 8:45)를 기준으로 컷 수와 컷별 길이를 계산하고, 클립 단위로 묶어 멀티샷 프롬프트를 한 번에 도출한다.</p></span></div>
     <div class="stage"><span class="sn">02</span><span class="sb"><strong>한국어 VO 먼저 생성</strong><p>VO를 먼저 만들어 실제 길이를 확정한 뒤 컷 길이를 맞춘다. 영상부터 만들면 반드시 어긋난다. 영어 VO는 조립 직전 단계에서 블록 길이에 맞춰 따로 만든다.</p></span></div>
-    <div class="stage"><span class="sn">03</span><span class="sb"><strong>6초 씬 일괄 생성</strong><p>배치로 큐잉. 8분 45초 기준 약 50씬. 실패한 씬만 재생성한다. <strong>생성 전 크레딧 사용 승인을 받는다.</strong></p></span></div>
+    <div class="stage"><span class="sn">03</span><span class="sb"><strong>8초 씬 일괄 생성</strong><p>배치로 큐잉. 8분 45초 기준 약 50씬. 실패한 씬만 재생성한다. <strong>생성 전 크레딧 사용 승인을 받는다.</strong></p></span></div>
     <div class="stage"><span class="sn">04</span><span class="sb"><strong>스틸 프레임 추출</strong><p>줌/팬으로 쓸 프레임을 클립에서 뽑는다. 추가 생성 없음.</p></span></div>
     <div class="stage"><span class="sn">05</span><span class="sb"><strong>텍스트·숫자 카드 자동 생성</strong><p>훅 숫자, 넘버링 카드 등 구조용 카드만. 템플릿에 값만 주입한다.</p></span></div>
     <div class="stage"><span class="sn">06</span><span class="sb"><strong>ffmpeg 조립 — 컷 전환은 문장 끝에</strong><p>다운로드 → 컷 번호순 인코딩 → VO 싱크 → 수치 오버레이 → SRT 생성까지 스크립트 한 번으로. <strong>컷 전환점은 나레이션 문장이 끝나는 지점에 맞춘다.</strong> 말이 이어지는 도중에 화면이 바뀌면 흐름이 끊긴다. VO의 문장 경계를 읽어 전환점을 자동 정렬한다.</p></span></div>
@@ -927,28 +919,6 @@ footer{
 <section>
   <div class="shead"><span class="snum">11</span><h2>쇼츠 라인과 자동화</h2></div>
 
-  <h3>★ 포맷 분기 — 3분 (2026-09-15 확정) ★</h3>
-  <div class="col">
-    <p><strong>기획 단계에서 «분량»으로 포맷을 가른다.</strong> 「길어졌으니 롱폼」이 아니라, 소재를 잡을 때 어느 쪽으로 만들지 정하고 그 규격으로 끝까지 간다.</p>
-  </div>
-  <div class="tscroll">
-  <table>
-    <thead><tr><th>분량</th><th>포맷</th><th>비율</th><th>근거</th></tr></thead>
-    <tbody>
-      <tr><td class="ep"><strong>3분 초과</strong></td><td>롱폼</td><td>16:9</td><td>유튜브 쇼츠 상한이 3분이라 <strong>넘으면 쇼츠로 올릴 수가 없다</strong></td></tr>
-      <tr><td class="ep"><strong>3분 이내</strong></td><td>숏폼</td><td>9:16</td><td>짧은 내용을 가로로 만들면 도달이 가장 약한 자리에 놓인다</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="col">
-    <p><strong>기획 단계의 잣대는 «음절 수»다.</strong> 1화 실측이 422.66초 / 2,538음절 = <strong>6.0자/초</strong>(1.2배속본 기준)이므로 —</p>
-    <p style="font-size:14px;color:var(--ink2)">180초 × 6.0 ≈ <strong>1,080음절</strong>. 대본이 이 아래로 들어오면 숏폼, 넘으면 롱폼. <strong>확정은 VO 실측으로만</strong> 한다 — 추정치로 규격을 바꾸지 않는다. (참고: 1화는 2,538음절 = 7분 02.7초 → 롱폼)</p>
-    <p style="font-size:14px;color:var(--ink2)">⚠️ <strong>경계 근처(2분 40초 ~ 3분 20초)는 롱폼으로 올린다.</strong> VO 실측이 3분을 넘겨 버리면 세로로 만든 것을 못 쓴다 — 되돌리는 비용이 한쪽만 크다.</p>
-  </div>
-  <div class="col">
-    <p style="font-size:14px;color:var(--ink2)">🔴 <strong>아래 「쇼츠는 별도 파이프라인으로」와 충돌하는 지점이 있다.</strong> 기존 표는 쇼츠를 <strong>«소재»로</strong> 갈랐고(가정형 질문 전용), 이 규칙은 <strong>«분량»으로</strong> 가른다. 그래서 <strong>「사물의 기원」 소재인데 3분 이내인 편</strong>이 새로 생긴다 — 그 편은 소재가 롱폼 계열이므로 <strong>완성도·자막 규칙은 롱폼을 따르고 규격만 9:16</strong>으로 간다. 기존 가정형 질문 쇼츠 라인은 그대로 둔다.</p>
-  </div>
-
   <h3>쇼츠는 별도 파이프라인으로</h3>
   <div class="col">
     <p>쇼츠는 롱폼의 유입 깔때기이자, 롱폼 정체성을 지키면서 클릭률 높은 소재를 소화하는 자리다. 여기서는 <strong>완성도보다 발행 속도가 우선</strong>이므로 롱폼과 규칙을 분리한다.</p>
@@ -958,7 +928,7 @@ footer{
     <thead><tr><th></th><th>롱폼</th><th>쇼츠</th></tr></thead>
     <tbody>
       <tr><td class="ep">소재</td><td>사물의 기원 (순수 유지)</td><td>가정형 질문 — “추락하는 엘리베이터에서 점프하면?”</td></tr>
-      <tr><td class="ep">씬 길이</td><td>6초 2비트</td><td>6초 2비트</td></tr>
+      <tr><td class="ep">씬 길이</td><td>8초 2비트</td><td>8초 2비트</td></tr>
       <tr><td class="ep">비율</td><td>16:9</td><td>9:16</td></tr>
       <tr><td class="ep">자막</td><td>키워드만, 한글 번인 금지</td><td>풀 자막 허용 (한국어 쇼츠 한정)</td></tr>
       <tr><td class="ep">완성도</td><td>수치 오류 = 폐기</td><td>미세 오류는 넘어간다</td></tr>
@@ -976,7 +946,7 @@ footer{
   </div>
   <div class="pipe">
     <div class="stage"><span class="sn">입력</span><span class="sb"><strong>“주제: 통조림”</strong></span></div>
-    <div class="stage"><span class="sn">출력</span><span class="sb"><strong>대본 → 팩트체크 표 → 컷 시트 → 프롬프트 전량</strong><p>8분 45초 기준 씬 분할, 씬별 6초 2비트 프롬프트(영문 코드블록), 설정 표, VO 글자수, 숫자 카드 값 목록, 팩트체크 표, 그리고 대본의 부족한 점 목록까지.</p></span></div>
+    <div class="stage"><span class="sn">출력</span><span class="sb"><strong>대본 → 팩트체크 표 → 컷 시트 → 프롬프트 전량</strong><p>8분 45초 기준 씬 분할, 씬별 8초 2비트 프롬프트(영문 코드블록), 설정 표, VO 글자수, 숫자 카드 값 목록, 팩트체크 표, 그리고 대본의 부족한 점 목록까지.</p></span></div>
   </div>
   <div class="col">
     <p>프롬프트는 <strong>영문 코드 블록</strong>으로 출력해 그대로 복사·전달할 수 있게 한다. 한 번 만들어 두면 2화부터는 소재 이름만 바꾸면 된다.</p>
@@ -1004,8 +974,8 @@ footer{
     <div class="stage">
       <span class="sn">규칙 2</span>
       <span class="sb">
-        <strong>씬 규격 — 6초 2비트</strong>
-        <p>모델은 <code>gemini_omni_flash_1_1</code> 하나. 한 씬 6초, 비트 최대 2개.</p>
+        <strong>씬 규격 — 8초 2비트</strong>
+        <p>모델은 <code>gemini_omni_flash_1_1</code> 하나. 한 씬 8초, 비트 최대 2개.</p>
         <p>카메라는 테이블톱 문법(오빗·탑다운·매크로·랙 포커스·횡이동) 안에서 씬 내용에 맞게 고른다. 고정 공식은 쓰지 않는다. 항공 부감과 크레인은 쓰지 않는다.</p>
         <p>계측선·보조선의 <strong>수치와 색상은 지정하지 않고 모델에 맡긴다. 화면 수치가 틀려도 그대로 진행한다.</strong></p>
       </span>
@@ -1031,7 +1001,7 @@ footer{
 
   <div class="note warn">
     <span class="klabel">규칙 2가 안고 있는 트레이드오프</span>
-    <p><strong>속도</strong> — 6초에 비트 2개면 화면이 3초마다 바뀐다. <strong>★2026-09-14 변경★</strong> 구 규칙은 「씬을 잘라 쓰고 사이에 추출 스틸을 끼워 컷을 2~3초로 만들라」였으나 <strong>폐기한다</strong>(K-Reality 방식). <strong>6초 클립을 통째로 쓰고</strong>, 리듬은 비트 2개와 씬 전환이 만든다. 「평균 컷 2.2초」 목표도 함께 폐기.</p>
+    <p><strong>속도</strong> — 8초에 비트 2개면 화면이 4초마다 바뀐다. 목표한 평균 컷 2.2초보다 느리다. 씬을 통째로 쓰지 말고 <strong>좋은 구간만 잘라 쓰고 사이에 추출 스틸 줌 컷을 끼워</strong> 실질 컷 길이를 2~3초로 만든다. 편집이 리듬을 만든다.</p>
     <p><strong>색 편차</strong> — 계측선 색을 지정하지 않으므로 씬마다 달라질 수 있다. 1화 완성 후 눈으로 확인하고, 거슬리면 공통 룩 블록에 색 한 줄을 추가해 잠근다.</p>
     <p><strong>화면 수치</strong> — 정확하지 않다. 감수하고 진행한다. 사실은 나레이션이 전달한다.</p>
   </div>
