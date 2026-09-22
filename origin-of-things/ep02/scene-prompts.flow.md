@@ -1,6 +1,6 @@
 # 2화 「샤워기 필터」 — ★Google Flow 전용 프롬프트 58씬★
 
-원본 타이밍 `scenes.json` · 한국어 초안 `shot-table-draft.md` · VO `vo/MiniMax_2026-09-19_21_11_21_Cheerful_Cool_Junior.wav`
+원본 타이밍 `scenes.json` · 한국어 초안 `shot-table-draft.md` · VO `vo/MiniMax_2026-09-22_splice-s57.wav` (S08~S09 문장 교체 + 결론 세 문장 교체본 · 320.58초)
 
 ## 1화 형식에서 바뀐 것
 
@@ -15,6 +15,11 @@
 > ★ **샤워기 필터의 모양 (2026-09-19 사용자 지시)** — 전 씬 공통으로 «투명한 손잡이 안에 든, 손가락 크기의 가늘고 긴 원통형 흰 섬유 필터»로 서술했다.
 > 필터만 따로 나오는 씬(S01·S08·S21·S45·S54·S56)도 «샤워기 손잡이에서 꺼낸 그 필터»로 쓰고, S01·S08·S56에는 빈 투명 손잡이를 옆에 둬서 출처가 읽히게 했다.
 > 치수는 제품마다 달라 숫자로 박지 않았다. **비타민 필터만 예외** — VO(「헤드 안에 들어가는」)대로 헤드 속 캡슐로 뒀다(S36·S38·S39·S44)
+> 🔴 **2026-09-21 — 「캡슐」은 오메가3 영양제 캡슐로 나왔다(S36 실측).** 실물은 «완두콩만 한 회색 알갱이가 꽉 찬 헤드» 또는 «알갱이가 안 보이는 타공 회색 카트리지»다.
+> **S36·S38·S39·S44 네 컷을 «완두콩만 한 무광 회색 알갱이»로 전부 맞췄다.** `vitamin`·`capsule`·`gel`·`yellow`는 영양제로 읽히므로 화면 서술에 쓰지 않는다.
+> 🔴 **「원통 카트리지」도 폐기했다 (2026-09-21 · S38 실측 · 사용자 지시).** 알갱이는 «헤드 하우징 안»에 직접 들어간다 — S36과 같은 구조다. 통을 하나 더 만들지 않는다.
+> ★ 분해 컷(S38)은 부품을 «하우징 + 살수판» 둘로만 가른다. 알갱이는 «하우징 챔버 안에 앉은 채» 떠 있다고 못 박았다 — 안 그러면 부품이 흩어질 때 알갱이 구름이 된다.
+> ★ S44는 「줄어든다」가 아니라 «BEAT 1 = 가득 / BEAT 2 = 1/3만 남고 위가 빈 상태»로 «두 상태»를 박았다 (모델은 「줄여라」를 수행하지 못한다).
 
 > ⚠️ **실존 기관 로고·인증 마크·브랜드는 그리지 않는다** — S24·S25·S26·S41은 «글자 없는 문서/포장»으로 서술했다
 > ⚠️ **화면 숫자는 모델이 그린다(틀려도 재생성하지 않는다)** — S19 7.5 L/min · S29 60 · S32 357 · S33 21/24 · S43 13/20
@@ -82,14 +87,18 @@ AUDIO: quiet room tone and a faint tap drip only, no music and no voice.
 > VO 「부엌의 정수기입니다. 정수기는 같은 수돗물을 여러 개의 필터에 차례로 통과시키고,」
 
 ```
-A countertop water purifier whose housing turns transparent, revealing four cylindrical filter stages stacked vertically inside.
-BEAT 1: the housing becomes glass-clear, exposing the stacked stages.
-BEAT 2: water descends through the stages one by one, pausing in each.
-CAMERA: fast vertical tilt down from the top stage to the outlet, covering the full height in 4 seconds.
+A countertop water purifier whose housing turns transparent, revealing four cylindrical filter cartridges standing side by side in one horizontal row, linked by short clear tubes. A pressurised tap-water supply hose enters the first cartridge from the left, fitted with a small thin amber pressure gauge.
+BEAT 1: the housing becomes glass-clear; the gauge needle stands high and the supply hose is taut.
+BEAT 2: mains pressure forces water sideways through the row, left to right, surging up from the bottom of each cartridge and pushing on into the next.
+CAMERA: fast lateral truck left to right following the water front from the supply hose to the last cartridge in 4 seconds.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
-AUDIO: gentle trickling water only, no music and no voice.
+AUDIO: pressurised water rushing through tubing only, no music and no voice.
 ```
+
+> 🔴 **v1 반려 (2026-09-19 사용자)** — 브리타처럼 «위에서 아래로 떨어지며» 정수되는 그림이 나왔다. 정수기는 «상수도 압력»으로 민다.
+> 원인은 프롬프트 문장 셋 — `stacked vertically` · `water descends … pausing in each` · `vertical tilt down`.
+> v2: 필터를 **가로 한 줄**로 세우고, 물은 **수압으로 옆으로 밀려 각 필터를 «아래에서 위로» 채운다** · 공급 호스에 앰버 압력계 · 카메라는 흐름을 따라 좌→우.
 
 ## S05 · 쓸길이 5.43초 · 생성 6초
 
@@ -124,18 +133,20 @@ AUDIO: water pressure hiss only, no music and no voice.
 > VO 「지나갑니다. 둘 다 필터라고 부르지만, 같은 일을 하고 있을까요. 세 가지를 차례로 보겠습니다.」
 
 ```
-A split screen divided by a thin vertical amber line. Left: a purifier outlet releasing slow separate droplets. Right: a handheld shower with a clear handle blasting a dense fast spray.
+A split screen divided by a thin vertical amber line. Left: a countertop purifier faucet pouring a thin, steady, glass-clear stream into a drinking glass. Right: a handheld shower with a clear handle blasting a dense fast spray.
 BEAT 1: both halves fill the frame tightly.
 BEAT 2: the view pulls back so the two setups sit side by side on the tabletop.
 CAMERA: crash zoom out from the dividing line to a wide two-shot within 2 seconds.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
-AUDIO: slow drips on the left and rushing spray on the right only, no music and no voice.
+AUDIO: a thin steady pour on the left and rushing spray on the right only, no music and no voice.
 ```
 
-## S08 · 쓸길이 5.23초 · 생성 6초
+> 🔴 **v1 교체 (2026-09-19 · 생성 전)** — 출수구가 «방울방울 떨어지는» 그림이었다. 실제 정수기는 가늘고 곧은 물줄기로 나온다 → «가는 물줄기»로. 샤워기의 굵은 분사와의 대비는 그대로다.
 
-> VO 「첫째, 하나의 필터. 노랗게 변한 필터를 세로로 잘라 보면, 색은 바깥쪽에 몰려」
+## S08 · 쓸길이 5.81초 · 생성 6초
+
+> VO 「첫째, 하나의 필터. 노랗게 변한 필터를 세로로 잘라 보면, 색은 물이 먼저 닿는 쪽에 몰려 있고」
 
 ```
 The same slim, finger-sized cylindrical fibre filter taken out of a shower handle, stained deep yellow-brown, held upright in a small clamp while a surgical scalpel slices it lengthwise. The open transparent handle it came from lies beside it.
@@ -147,19 +158,21 @@ Every frame shows objects only. Any lettering that appears in frame is Latin cha
 AUDIO: precise fibrous cutting sound only, no music and no voice.
 ```
 
-## S09 · 쓸길이 5.23초 · 생성 6초
+## S09 · 쓸길이 5.13초 · 생성 6초
 
-> VO 「있고 안쪽은 아직 하얗습니다. 이 필터는 가는 플라스틱 섬유를 얽어 만든 그물입니다.」
+> VO 「반대쪽은 아직 하얗습니다. 이 필터는 가는 플라스틱 섬유를 얽어 만든 그물입니다.」
 
 ```
-Macro of the freshly cut cross-section of the slim cylindrical fibre filter: the outer layer stained yellow-brown, the inner layers still bright white.
-BEAT 1: the stained outer band fills the left of frame.
-BEAT 2: the frame travels across the layers into the clean white core.
-CAMERA: fast lateral tracking 3 centimetres from the outer edge to the core in 4 seconds.
+Extreme macro of the freshly cut face of the slim fibre filter wall, seen as a single band of tangled white fibres running across the frame. A thin amber arrow at the left edge marks where the water enters: the fibres on that side are stained yellow-brown, and the stain fades across the band until the right side is still bright white.
+BEAT 1: the stained side and the amber arrow fill the left of frame.
+BEAT 2: the frame travels across the band into the clean white fibres.
+CAMERA: fast lateral tracking 3 centimetres from the stained side to the white side in 4 seconds.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
 AUDIO: quiet room tone only, no music and no voice.
 ```
+
+> 🔴 **v1 교체 (2026-09-19 · 생성 전)** — VO가 「바깥쪽/안쪽」에서 「물이 먼저 닿는 쪽/반대쪽」으로 바뀌었다(손잡이형 필터는 물이 안→밖으로 흐른다는 설명이 있다). 그래서 절단면도 «안/밖»을 특정하지 않는다 — 초접사로 필터 벽 한 줄만 보여주고, 앰버 화살표가 가리키는 쪽이 물드는 쪽이다.
 
 ## S10 · 쓸길이 5.23초 · 생성 6초
 
@@ -222,14 +235,16 @@ AUDIO: soft flowing water only, no music and no voice.
 > VO 「둘째, 속도. 정수기가 여러 개의 필터를 쓰는 이유는, 이런 필터로 못 거르는 것을 다른」
 
 ```
-The stacked filter stages of a transparent countertop purifier, one stage packed with black granular activated carbon.
-BEAT 1: all stages visible in a vertical row.
-BEAT 2: the carbon stage fills the frame.
-CAMERA: crash zoom onto the carbon stage within the first 1.5 seconds.
+The same countertop water purifier with its transparent housing: four cylindrical filter cartridges standing side by side in one horizontal row, linked by short clear tubes, the second cartridge packed with black granular activated carbon.
+BEAT 1: all four cartridges visible side by side in the row.
+BEAT 2: the carbon cartridge fills the frame.
+CAMERA: crash zoom onto the carbon cartridge within the first 1.5 seconds.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
 AUDIO: quiet room tone only, no music and no voice.
 ```
+
+> 🔴 **v1 교체 (2026-09-19 · 생성 전)** — S04 v1과 같은 `stacked … vertical row`(위아래로 쌓인 필터)였다 → S04 v2와 같은 «가로 한 줄» 배치로. 같은 정수기로 읽혀야 한다.
 
 ## S15 · 쓸길이 5.41초 · 생성 6초
 
@@ -534,9 +549,9 @@ AUDIO: water in pipes only, no music and no voice.
 > VO 「그래도 확실히 효과가 있는 필터가 있습니다. 바로 샤워기 헤드 안에 들어가는 염소 필터입니다. 수돗물에는」
 
 ```
-A bright bathroom; a shower head whose head housing holds a translucent capsule of bright yellow vitamin gel.
+A bright bathroom; a handheld shower head with a transparent clear-plastic head housing, the round chamber behind the spray plate packed solid with pea-sized matte grey mineral granules, like fine gravel.
 BEAT 1: the bathroom wall with the shower.
-BEAT 2: the yellow capsule in the head fills the frame.
+BEAT 2: the clear head fills the frame, the tightly packed grey granules plainly visible through the housing.
 CAMERA: crash zoom onto the shower head within the first 1.5 seconds.
 LOOK: real-location documentary photography, 16:9, 30fps, physically based lighting, bright natural daylight filling the space, clean neutral white surfaces, crisp shadows, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral daylight white, clean and airy.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
@@ -562,10 +577,10 @@ AUDIO: soft flowing water only, no music and no voice.
 > VO 「않습니다. 헤드 안에 비타민 씨를 넣어 두고, 염소와 반응하게 합니다. 염소는 그 순간, 자극 없는 성분으로」
 
 ```
-A shower head rotates and separates into its parts in mid-air: head housing, spray plate, and a translucent capsule of bright yellow vitamin gel, all hanging suspended.
+A shower head rotates and opens in mid-air: the transparent clear-plastic head housing and the spray plate separate and hang suspended, the round chamber of the housing packed solid with pea-sized matte grey mineral granules. The granules stay settled inside the housing chamber as it floats.
 BEAT 1: the assembled shower head begins to twist apart.
-BEAT 2: the parts float apart, the yellow capsule at the centre.
-CAMERA: fast orbit 60 degrees following the separating parts in 4 seconds.
+BEAT 2: the spray plate floats away, the open housing full of grey granules at the centre.
+CAMERA: fast orbit 60 degrees following the opening head in 4 seconds.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
 AUDIO: mechanical click and slide only, no music and no voice.
@@ -575,11 +590,17 @@ AUDIO: mechanical click and slide only, no music and no voice.
 
 > VO 「바뀝니다. 걸러내는 것이 아니라 바꿔 버리는 것이라, 물이 빨리 지나가도 상관이 없습니다. 미국에서는」
 
+> 🔴 **v2 교체 (2026-09-21 · v1 실측 반려)** — v1은 알갱이가 헤드 «겉면·살수판»에 붙고, 살수판에서 «Cl 태그 입자가 그대로 뿜어져» 나왔다(=염소가 안 걸러짐).
+> 원인: ① `inside the shower head` 시점을 모델이 못 만들고 겉에 알갱이를 발랐다 ② `instantly changes into` = «변해라»는 수행 못 하는 과정 지시 ③ 카메라가 살수판에서 끝나 태그 입자가 밖으로 나오는 게 마지막 그림이 됐다.
+> v2: «세로로 자른 단면을 옆에서» · 변화를 시간이 아니라 «공간»으로 — 알갱이 왼쪽 = 태그 있음 / 오른쪽 = 태그 없음 · 살수판 물은 맑다 · 겉면은 매끈하다고 못 박음.
+> 🔴 **v3 교체 (2026-09-21 · v2 실측 반려)** — v2는 «잔디 살수 장비»로 나왔다. `cutaway`·`sliced in half`·`seen from the side`가 «가정용 샤워기»라는 정체를 지웠다(잘린 원판 헤드의 옆모습 = 노즐).
+> v3: 단면을 버리고 «투명 하우징으로 속이 보이는 온전한 샤워기»를 3/4 각도로 — 은색 호스 · 긴 손잡이 · 둥근 원판 헤드 · 작은 노즐 살수판을 전부 명시. 공간 분리(손잡이 = 태그 / 헤드 뒤 = 태그 없음)는 유지.
+
 ```
-3D render inside a yellow vitamin capsule: fast-flowing water carries amber Cl-tagged particles into the yellow medium, where each particle instantly changes into a plain white particle with no tag.
-BEAT 1: tagged particles rush into the yellow medium.
-BEAT 2: they emerge as plain white particles at full speed.
-CAMERA: dolly through the capsule with the flow from inlet to outlet in 3 seconds.
+The same handheld bathroom shower as before, standing upright in a simple holder on the tabletop at a three-quarter angle: a flexible silver shower hose, a long slim handle, and a round flat disc-shaped head whose face is a perforated spray plate of small nozzles. The handle and head housing are transparent clear plastic, so the inside is visible; the round chamber behind the spray plate is packed solid with pea-sized matte grey mineral granules. Water runs through it carrying small particles, each marked with a thin amber tag reading Cl. Inside the handle, before the granules, every particle carries its amber tag; past the granules the water carries only plain white particles with no tags, and fine jets of clear water spray from the nozzles. The outside of the housing and the spray face are smooth, clean and bare.
+BEAT 1: amber-tagged particles flowing up the clear handle toward the head.
+BEAT 2: the round head, clear water jets spraying from the nozzles.
+CAMERA: fast lateral truck 30 centimetres from the handle to the head in 4 seconds.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
 AUDIO: rushing water only, no music and no voice.
@@ -589,14 +610,18 @@ AUDIO: rushing water only, no music and no voice.
 
 > VO 「수도관을 청소하고 나온 염소 섞인 물을 강에 흘려보내기 전에, 바로 이 비타민 씨로 염소를」
 
+> 🔴 **v2 교체 (2026-09-21 · v1 실측 반려)** — v1은 «강으로 난 하수관 + 흰 가루 통을 붓는 사람»으로 나와 «오염물 투기»로 읽혔다.
+> 원인: `water main flushing point`를 모델이 하수 배출구로 풀었고, `pour white powder into the flow`는 투기 그림 그 자체다.
+> v2: 사람·가루를 빼고 «소화전 → 호스 → 회색 알갱이 상자 → 맑은 물이 풀밭으로» — 실제 탈염소 디퓨저 방식이고, S36~S44의 알갱이와 같은 모양이라 «바로 이 비타민 씨»가 그림으로 이어진다. 개울은 화면 뒤쪽 멀리에만 둔다.
+
 ```
-A forest stream beside a water main flushing point; a hose releases water toward the stream while a worker's gloved hands pour white powder into the flow. Face not shown.
-BEAT 1: the forest and the stream in daylight.
-BEAT 2: the gloved hands pouring powder into the water.
-CAMERA: crane down 4 metres from the tree canopy to the hands in 4 seconds.
+A red roadside fire hydrant at the edge of a forest in daylight, a flat hose running from it to a transparent clear-plastic box lying on the grass, the box packed solid with pea-sized matte grey mineral granules like those in the shower head. The hydrant water pours into the box, passes through the granules and spreads out the far side as a thin clear sheet over the grass, sloping gently down toward a small forest stream at the back of the frame.
+BEAT 1: the forest and the distant stream in daylight from above the trees.
+BEAT 2: the clear box of grey granules on the grass, water pouring in from the hose and flowing out clear.
+CAMERA: crane down 4 metres from the tree canopy to the granule box in 4 seconds.
 LOOK: real-location documentary photography, 16:9, 30fps, physically based lighting, bright natural daylight filling the space, clean neutral white surfaces, crisp shadows, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral daylight white, clean and airy.
-Any person appears only as hands, a back view or a silhouette; no face is shown. Any lettering that appears in frame is Latin characters or numerals.
-AUDIO: stream water and gushing hose only, no music and no voice.
+Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
+AUDIO: gushing hose water and distant stream only, no music and no voice.
 ```
 
 ## S41 · 쓸길이 5.63초 · 생성 6초
@@ -647,10 +672,10 @@ AUDIO: mechanical turntable hum only, no music and no voice.
 > VO 「작동합니다. 다만 이 결과는 새 제품일 때의 값입니다. 비타민은 반응할 때마다 조금씩 닳습니다.」
 
 ```
-A yellow vitamin gel capsule inside a clear shower head, water flowing through; over time the yellow gel shrinks and thins.
-BEAT 1: the capsule full and bright yellow.
-BEAT 2: the gel reduced to a thin remnant.
-CAMERA: push-in 20 centimetres toward the capsule across the full 6 seconds, time-lapse inside the frame.
+A transparent clear-plastic shower head, its round chamber packed with pea-sized matte grey mineral granules, water flowing through, a time-lapse running across the shot.
+BEAT 1: the chamber packed solid with granules right up to the top.
+BEAT 2: the same chamber now only a third full, the remaining granules smaller and rounded, a clear empty gap above them.
+CAMERA: push-in 20 centimetres toward the head across the full 6 seconds, time-lapse inside the frame.
 LOOK: tabletop documentary photography, 16:9, 30fps, physically based lighting, warm pale paper-grey backdrop and tabletop, strong directional key from upper left casting crisp shadows with a subtle cool fill, matte non-reflective surfaces, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral white, clean, high contrast on the subject.
 Every frame shows objects only. Any lettering that appears in frame is Latin characters or numerals.
 AUDIO: continuous water flow only, no music and no voice.
@@ -799,20 +824,21 @@ AUDIO: quiet room tone only, no music and no voice.
 ## S55 · 쓸길이 5.44초 · 생성 6초 · 🏠
 
 > VO 「않습니다. 색이 아직 연하더라도, 제조사가 정한 교체 시기가 지나면 새 필터로 바꾸는 것이 안전합니다.」
+> 🔴 **2026-09-22 v2** — v1은 헤드 쪽을 열어 교체했다(실측). 「end cap」이 어느 끝인지 안 정해져 있었다 → «호스가 붙는 손잡이 하단»을 열고 헤드는 반대편에 닫힌 채 화면에 두는 것으로 못 박았다
 
 ```
-A bathroom; hands unscrew the end cap of a transparent shower handle, slide out a yellow-stained slim fibre filter and insert a brand-new white one.
-BEAT 1: the hands and the old yellow filter seen from above.
-BEAT 2: the new white filter sliding into the clear handle.
-CAMERA: top-down then fast dolly-in 40 centimetres toward the new filter in 3 seconds.
+A bathroom counter; a handheld shower head with a transparent clear-plastic handle lies unhooked from its hose, its round spray head at the far end of the frame, closed and untouched. Hands grip the lower end of the handle, the threaded grip end where the hose attaches, twist off the small cap at that bottom end, and slide a yellow-stained slim fibre filter out through the bottom opening; a brand-new white one then goes back in through the same bottom opening.
+BEAT 1: the hands at the bottom end of the handle, the old yellow filter sliding out of the bottom opening, the spray head intact at the far end.
+BEAT 2: the new white filter sliding up into the clear handle from the bottom end.
+CAMERA: top-down then fast dolly-in 40 centimetres toward the bottom opening of the handle in 3 seconds.
 LOOK: real-location documentary photography, 16:9, 30fps, physically based lighting, bright natural daylight filling the space, clean neutral white surfaces, crisp shadows, shallow depth of field, clean digital capture. Any measurement lines, gauges and figures are thin amber. GRADE: bright neutral daylight white, clean and airy.
 Any person appears only as hands, a back view or a silhouette; no face is shown. Any lettering that appears in frame is Latin characters or numerals.
 AUDIO: plastic click and thread turn only, no music and no voice.
 ```
 
-## S56 · 쓸길이 5.14초 · 생성 6초
+## S56 · 쓸길이 5.46초 · 생성 6초
 
-> VO 「결론으로 노랗게 변한 필터의 색은, 필터가 눈에 보이는 이물질을 제대로 걸러냈다는」
+> VO 「결론으로 노랗게 변한 필터의 색은, 필터가 눈에 보이는 이물질을 제대로 걸러냈다는 증거입니다.」 ← 2026-09-22 결론 교체로 경계 이동
 
 ```
 On the tabletop lie a slim, finger-sized cylindrical filter of soft white fibre, the kind that sits inside the transparent handle of a handheld shower head, next to the same slim, finger-sized cylindrical fibre filter taken out of a shower handle, stained deep yellow-brown. An empty transparent shower handle lies behind them. Same framing as the opening shot.
@@ -824,9 +850,9 @@ Every frame shows objects only. Any lettering that appears in frame is Latin cha
 AUDIO: quiet room tone only, no music and no voice.
 ```
 
-## S57 · 쓸길이 5.14초 · 생성 6초 · 🏠
+## S57 · 쓸길이 5.20초 · 생성 6초 · 🏠
 
-> VO 「증거입니다. 노후 배관의 부스러기를 개인이 차단할 수 있는 마지막 물리적 안전망이라고 볼 수 있지만」
+> VO 「필터가 모든 걸 해결해 주지는 않습니다. 하지만 노후 배관에서 떨어져 나온 부스러기라면」 ← 2026-09-22 결론 교체
 
 ```
 An older apartment bathroom, clean and bright; a handheld shower head with a transparent clear-plastic handle with a fresh white fibre filter visible inside the clear handle releases clear water.
@@ -838,9 +864,9 @@ Every frame shows objects only. Any lettering that appears in frame is Latin cha
 AUDIO: shower water spray only, no music and no voice.
 ```
 
-## S58 · 쓸길이 5.14초 · 생성 6초 · 🏠
+## S58 · 쓸길이 5.15초 · 생성 6초 · 🏠
 
-> VO 「필요 없다고 느낀다면, 쓰지 않아도 괜찮습니다. 선택은, 이제 여러분의 몫입니다.」
+> VO 「이야기가 다릅니다. 오래된 집에 산다면, 샤워기에 필터 하나쯤은 달아 두셔도 좋습니다.」 ← 2026-09-22 결론 교체 · 화면 프롬프트는 그대로
 
 ```
 A bright, calm bathroom in daylight, a handheld shower head with a transparent clear-plastic handle hanging on the wall, turned off, a few last droplets falling.
