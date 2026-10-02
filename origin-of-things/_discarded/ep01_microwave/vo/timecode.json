@@ -1,7 +1,7 @@
 {
   "VALID": true,
-  "source": "ep01/vo/ep01-vo-x120.mp3",
-  "master": "ep01/vo/ep01-vo-master-20260914-fit.mp3",
+  "source": "_discarded/ep01_microwave/vo/ep01-vo-x120.mp3",
+  "master": "_discarded/ep01_microwave/vo/ep01-vo-master-20260914-fit.mp3",
   "script_version": "v6",
   "duration": 422.66,
   "tempo": 1.2,

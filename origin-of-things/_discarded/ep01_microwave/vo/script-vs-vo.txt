@@ -1,7 +1,7 @@
 1화 「전자레인지」 — 대본 × VO 대조표
 
-음성   ep01/vo/ep01-vo-x120.mp3   (1.2배속본 · 7분 02.7초)
-대본   ep01/script-blocks.json    v6
+음성   _discarded/ep01_microwave/vo/ep01-vo-x120.mp3   (1.2배속본 · 7분 02.7초)
+대본   _discarded/ep01_microwave/script-blocks.json    v6
 타임코드는 ★이 배속본 기준★이다. 블록 경계는 faster-whisper 정렬로 잡았고 전사로 육안 검증했다.
 
 ==============================================================================

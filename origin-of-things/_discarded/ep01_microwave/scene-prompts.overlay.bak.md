@@ -2,7 +2,7 @@
 
 씬 규칙 **`ceil`** 확정 · **75씬** · 전 씬 **6초 생성 클립** · 화면 길이 4.29~5.94초 · 크레딧 0 (작성만)
 
-원본 데이터 `ep01/scenes.json` — 씬 id·in·out·길이·그 구간 VO. 조립 스크립트는 이 파일을 읽는다.
+원본 데이터 `_discarded/ep01_microwave/scenes.json` — 씬 id·in·out·길이·그 구간 VO. 조립 스크립트는 이 파일을 읽는다.
 
 ---
 
@@ -14,23 +14,15 @@
 STYLE: tabletop documentary photography, 16:9, 30fps, physically based lighting,
 soft large diffused key from upper left plus subtle cool fill, matte non-reflective
 surfaces, shallow depth of field, fine film-free digital cleanliness.
-NEGATIVE: no people, no hands, no faces, no subtitles, no Korean text, no sentences,
-no paragraphs of text, no logos, no brand marks, no watermark, no music, no singing,
-no speech, no voice, no aerial shot, no crane shot, no drone, no whip pan, no lens flare,
-no on-screen UI.
+NEGATIVE: no people, no hands, no faces, no text, no captions, no letters, no numbers,
+no logos, no brand marks, no watermark, no music, no singing, no speech, no voice,
+no aerial shot, no crane shot, no drone, no whip pan, no lens flare, no on-screen UI.
 AUDIO: diegetic room tone and mechanical sound only.
 ```
 
-> ✅ **`no numbers`는 제거됐다 (2026-09-14 · 사용자 지시).** ★**후반 오버레이를 쓰지 않는다**★ —
-> 화면에 뜨는 숫자는 **모델이 그린다.** 이것은 새 규칙이 아니라 README §확정 사항의
-> 「계측선 — 수치와 색상은 모델에 맡긴다. 화면 수치가 틀려도 진행한다」를 따르는 것이다.
-> 프롬프트 작성 시 이 확정 사항을 어기고 `no numbers`를 넣었던 것을 되돌렸다.
-> ```
-> 살아있는 규칙   한글 번인 금지 · 자막 금지 · 로고 금지   ← NEGATIVE에 남겨 둡다
-> 폐기된 것     no numbers · no letters · no text · no captions · 후반 오버레이 전체
-> 사실의 책임   ★나레이션★이 진다. 화면 숫자가 틀려도 그대로 간다
-> ```
-> → 씬 표의 **「화면값」 칸**은 이제 「후반에 얹을 것」이 아니라 **「프롬프트가 그리라고 시키는 값」**이다.
+> ⚠️ **`no numbers`가 스타일 락에 있는 이유** — 숫자는 **후반 오버레이**로 얹는다(README §전면 생성).
+> 모델이 쓴 숫자를 믿지 않는다는 규칙이 그대로 살아 있고, 화면 한글 번인도 금지다.
+> → 씬 표의 **「오버레이」 칸**이 CapCut에서 얹을 텍스트다. **프롬프트에는 절대 넣지 않는다.**
 
 ### 0-B. 카메라 어휘 — ★이 다섯 가지만 쓴다★
 
@@ -78,12 +70,12 @@ S72–S75   S01~S03과 ★완전히 동일한 룩★           코다 (수미상
 
 ## B1 · 훅 (S01–S04 · 0:00.00–0:18.86 · 씬 4.71초)
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S01 | 0:00.00–0:04.71 | — | 부엌 선반 위 전자레인지 정면 |
 | S02 | 0:04.71–0:09.43 | — | 문 유리 → 안쪽 금속망 랙포커스 |
 | S03 | 0:09.43–0:14.14 | — | 금속망 극매크로 |
-| S04 | 0:14.14–0:18.86 | **`20`** | 구멍 하나 속 어둠 |
+| S04 | 0:14.14–0:18.86 | **`20`** (후반) | 구멍 하나 속 어둠 |
 
 **S01** — 「지금 여러분의 부엌에 하나쯤 있을 겁니다」
 ```
@@ -117,8 +109,6 @@ Ultra-macro on a single perforation in the metal shield, the hole opening into p
 black, the machined burr on its rim catching light.
 BEAT 1: the surrounding metal grain is visible, the hole a black circle at centre.
 BEAT 2: the frame continues into the hole until black fills two thirds of the image.
-ON-SCREEN: the figure 20 in plain white sans-serif, lower left third, fading in at
-3 seconds over the black and holding to the end.
 CAMERA: macro push-in advancing until the single hole occupies 70 percent of frame.
 ```
 
@@ -128,12 +118,12 @@ CAMERA: macro push-in advancing until the single hole occupies 70 percent of fra
 
 도면 톤. **선으로 그린 단면**이 실물 위에 얹히는 다이어그램 룩.
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S05 | 0:18.86–0:24.72 | — | 금속 상자 단면 도면이 닫힌다 |
 | S06 | 0:24.72–0:30.58 | — | 갇힌 전파가 내벽을 반사 |
 | S07 | 0:30.58–0:36.44 | — | 시선 궤적이 금속벽에 막힘 |
-| S08 | 0:36.44–0:42.30 | — | 두 조건이 겹쳐 교착 |
+| S08 | 0:36.44–0:42.30 | **`?`** (후반) | 두 조건이 겹쳐 교착 |
 
 **S05** — 「가두면 보이지 않고, 뚫으면 새어 나온다」
 ```
@@ -167,8 +157,7 @@ CAMERA: lateral dolly 12 centimetres to the left across the full 6 seconds.
 Split composition on white: left, a fully sealed steel box, dark and closed. Right, the
 same box with an open rectangular window, cyan wave traces spilling out of it.
 BEAT 1: both states sit side by side, equally lit.
-BEAT 2: both dim by a third and the gap between them narrows, the two states pressing
-toward each other without meeting.
+BEAT 2: both dim by a third, leaving a deliberate empty area at frame centre.
 CAMERA: static framing with a 1.05x macro push-in over the full 6 seconds.
 ```
 
@@ -182,7 +171,7 @@ CAMERA: static framing with a 1.05x macro push-in over the full 6 seconds.
 ★**탈색 카키 그레이드 구간**★ — `desaturated khaki-olive grade, cool shadows, lifted blacks`
 를 각 프롬프트 STYLE 앞에 한 줄 추가한다. **S20에서 중성으로 돌아온다.**
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S09 | 0:42.30–0:48.17 | — | 야간 하늘, 지상에서 올려본 구름 |
 | S10 | 0:48.17–0:54.03 | — | 레이더 안테나 회전 |
@@ -276,8 +265,8 @@ CAMERA: lateral dolly 40 centimetres along the conveyor across the full 6 second
 ```
 A magnetron mounted in an open test rig on a laboratory bench, cables running to an
 off-frame supply. The bench is otherwise empty, the stool beside it unoccupied.
-BEAT 1: the rig sits powered, the needle on the bench meter resting at the low end of its dial.
-BEAT 2: the needle rises and settles, the copper block and the air around it unchanged.
+BEAT 1: the rig sits powered, a faint heat shimmer above the cooling fins.
+BEAT 2: the shimmer thickens and the copper darkens slightly with heat.
 CAMERA: macro push-in of 1.5x onto the magnetron across the full 6 seconds.
 ```
 
@@ -309,7 +298,7 @@ CAMERA: static framing at kernel height, 120fps captured motion played back at 3
 
 ★그레이드 복귀★ — 카키를 털고 중성 회백으로 돌아온다. **S20이 전환점이다.**
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S20 | 1:46.82–1:51.11 | — | 레이더레인지 캐비닛 정면 |
 | S21 | 1:51.11–1:55.39 | — | 조리대 높이 눈금과 비교 |
@@ -327,11 +316,11 @@ CAMERA: orbit 15 degrees to the right across the full 6 seconds.
 
 **S21** — 「음식을 데우는 데는 성공했습니다」
 ```
-The same steel cabinet, its small upper door standing open, a plain white plate of food
-on the rack inside, shot straight-on at door height on neutral grey.
-BEAT 1: the plate sits inside the open cabinet, the interior plain sheet steel.
-BEAT 2: steam rises steadily from the plate and keeps rising to the end.
-CAMERA: macro push-in of 1.4x from the full cabinet to the open door across the full 6 seconds.
+The same steel cabinet, now with a domestic kitchen counter section standing beside it
+at normal counter height, both on neutral grey. The cabinet towers far above the counter.
+BEAT 1: both objects sit side by side, the height difference plainly readable.
+BEAT 2: a thin horizontal guide line sweeps up from the counter top past the cabinet mid point.
+CAMERA: lateral dolly 30 centimetres to the right across the full 6 seconds.
 ```
 
 **S22** — 「그것을 부엌에 들여놓을 방법이 없었습니다. 이십 년 동안이나요」
@@ -347,7 +336,7 @@ CAMERA: macro push-in of 1.2x on the contact edge, ending in blackout.
 
 ## B5 · 2막 — 1차 해결과 그 대가 (S23–S32 · 1:59.68–2:58.22 · 씬 5.85초)
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S23 | 1:59.68–2:05.53 | — | 특허 도면 탑다운 |
 | S24 | 2:05.53–2:11.39 | **`1945.10.08`** | 도면 표제란 |
@@ -372,10 +361,9 @@ CAMERA: top-down macro push-in of 1.6x across the full 6 seconds.
 **S24** — 「등록까지는 다시 오 년이 걸렸습니다」
 ```
 Extreme macro across the lower corner of the same drawing sheet, where a blank rectangular
-title block is ruled in ink. Inside it the date 1945.10.08 is stamped in period
-typewriter ink, slightly uneven, paper fibre visible around it.
+title block is ruled in ink. The block is empty, paper fibre visible.
 BEAT 1: focus sits on the paper grain outside the block.
-BEAT 2: focus moves onto the stamped date, which fills the right half of frame.
+BEAT 2: focus moves onto the empty title block, which fills the right half of frame.
 CAMERA: rack focus from paper grain to title block, completing at 4 seconds.
 ```
 
@@ -392,21 +380,19 @@ CAMERA: orbit 35 degrees to the left across the full 6 seconds.
 
 **S26** — 「무게는 삼백사십 킬로그램이 넘었습니다」
 ```
-Macro on a large round industrial weighing dial with a white face, engraved graduations
-running from 0 to 400 with the unit kg printed below the spindle, and a single black
-needle, mounted on a steel plate.
-BEAT 1: the needle rests at zero at the bottom of its travel.
-BEAT 2: the needle swings clockwise through roughly 300 degrees and settles just past
-the 340 graduation.
+Macro on a large round industrial dial gauge with an unmarked white face and a single
+black needle, mounted on a steel plate.
+BEAT 1: the needle rests at the bottom of its travel.
+BEAT 2: the needle swings clockwise through roughly 300 degrees and settles near the top.
 CAMERA: macro push-in of 1.3x on the dial face across the full 6 seconds.
 ```
 
 **S27** — 「값은 오천 달러」
 ```
-A white price card standing upright in a small brass easel on a neutral grey surface,
-$5,000 printed on it in large plain serif figures, evenly lit.
-BEAT 1: the card sits square to camera, its edge shadow soft, the figures in shadow.
-BEAT 2: the key light lifts and the figures resolve crisp against near paper white.
+A blank white card standing upright in a small brass easel on a neutral grey surface,
+the card face empty and evenly lit.
+BEAT 1: the card sits square to camera, its edge shadow soft.
+BEAT 2: the key light lifts and the card face brightens to near paper white.
 CAMERA: macro push-in of 1.25x on the card face across the full 6 seconds.
 ```
 
@@ -443,26 +429,23 @@ A large domestic appliance cabinet on neutral grey, waist height and nearly a me
 enamelled finish with a small viewing door and chrome trim, no markings.
 BEAT 1: the unit sits alone, its bulk filling the lower two thirds of frame.
 BEAT 2: a counter section slides in beside it, the unit still visibly deeper and taller.
-ON-SCREEN: the figure 1955 in plain white sans-serif, lower left third, fading in at
-2.5 seconds and holding to the end.
 CAMERA: orbit 30 degrees to the right across the full 6 seconds.
 ```
 
 **S32** — 「거의 팔리지 않았습니다」
 ```
-A row of eight identical domestic appliance cabinets standing in a showroom, each draped
-with a plain grey dust sheet, receding from foreground to background on a neutral grey
-floor. Price tags hang from the handles, the printed side turned away.
-BEAT 1: the row stands still, a thin layer of dust visible on the nearest sheet.
-BEAT 2: the tag on the nearest unit turns slightly in the still air.
-CAMERA: lateral dolly 35 centimetres along the row across the full 6 seconds.
+A bar chart rendered as physical extruded blocks on a neutral grey plane, seen at a low
+20 degree angle. Every bar is flattened almost to the base plane.
+BEAT 1: the row of near-zero bars runs from foreground to background, barely raised.
+BEAT 2: the bars attempt a rise of a few millimetres and settle back down.
+CAMERA: lateral dolly 35 centimetres along the bar row across the full 6 seconds.
 ```
 
 ---
 
 ## B6 · 훅 3 — 2차 딜레마 (S33–S35 · 2:58.22–3:16.04 · 씬 5.94초)
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S33 | 2:58.22–3:04.16 | — | 상자가 완전히 닫히며 암전 |
 | S34 | 3:04.16–3:10.10 | — | 창이 뚫리자 전파가 새어 나감 |
@@ -506,7 +489,7 @@ CAMERA: static framing with a 1.05x macro push-in across the full 6 seconds.
 > 「같은 구멍이 하나에게는 벽이고 하나에게는 문」이라는 **논증이 시각적으로 안 이어진다.**
 > 판·조명·카메라 높이를 **16씬 내내 고정**하고, **판 «위의 것»만 바꾼다.**
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S36 | 3:16.04–3:21.93 | **`1`** | 첫째, 파장 — 파형이 그려진다 |
 | S37 | 3:21.93–3:27.82 | **`12 cm`** | 12cm 파형과 눈금 |
@@ -531,30 +514,25 @@ An empty white laboratory table filling frame, seen at table height, nothing on 
 BEAT 1: the bare white surface holds, a soft falloff toward the back edge.
 BEAT 2: a single luminous cyan sine wave draws itself across the table from left to right,
 about one metre long with four visible crests.
-ON-SCREEN: the numeral 1 in plain dark sans-serif, upper left third, fading in at
-1 second and holding to the end.
 CAMERA: macro push-in of 1.15x across the full 6 seconds.
 ```
 
 **S37** — 「이 기계가 쓰는 전파의 파장은 약 십이 센티미터입니다」
 ```
-The cyan sine wave lying on the white table, with a steel rule graduated in centimetres
-placed parallel beneath one full crest-to-crest span.
+The cyan sine wave lying on the white table, with a plain unmarked steel rule placed
+parallel beneath one full crest-to-crest span.
 BEAT 1: the rule slides in from the right and aligns under a single wave period.
-BEAT 2: that one period brightens while the rest of the wave dims by half, and a thin
-dimension line spans it labelled 12 cm in plain dark sans-serif.
+BEAT 2: that one period brightens while the rest of the wave dims by half.
 CAMERA: top-down framing with a 1.3x macro push-in across the full 6 seconds.
 ```
 
 **S38** — 「자기 파장보다 뚜렷하게 작은 구멍은 통과하지 못한다」
 ```
-A thin drawn line of luminous cyan light lying on the white table in the shape of a sine
-curve, the same line as in the wavelength shot, identical in colour and line weight. An
-upright perforated steel plate stands across its path, holes about 1.5 millimetres across.
-BEAT 1: the whole drawn line slides to the right along the table until its leading end
-reaches the plate face.
-BEAT 2: the line rebounds off the plate and slides back to the left, the outgoing and
-returning line crossing into a stationary figure of light in front of the plate.
+The cyan wave travelling left to right across the white table toward an upright
+perforated steel plate standing across its path, holes about 1.5 millimetres across.
+BEAT 1: the wave advances and meets the plate face.
+BEAT 2: the wave reflects backward off the plate, the returning crests overlapping the
+incoming ones into a standing pattern.
 CAMERA: lateral dolly 20 centimetres to the right across the full 6 seconds.
 ```
 
@@ -565,8 +543,6 @@ lattice fully visible and lit from behind so each hole shows as a bright point.
 BEAT 1: the lattice of bright points reads clearly as open holes.
 BEAT 2: a cyan sheet of light washes across the plate face and is entirely turned back,
 none of it passing through.
-ON-SCREEN: the numeral 2 in plain white sans-serif, upper left third, fading in at
-1 second and holding to the end.
 CAMERA: macro push-in of 1.4x on the plate centre across the full 6 seconds.
 ```
 
@@ -585,8 +561,7 @@ CAMERA: top-down framing with a 1.2x macro push-in across the full 6 seconds.
 Extreme macro diving into the warm white line on the table until its structure resolves
 into individual crests, packed impossibly tight.
 BEAT 1: the line reads as solid, no structure visible.
-BEAT 2: magnification reaches the point where hundreds of individual crests resolve, a
-thin dimension line spanning one crest labelled 0.0005 mm in plain white sans-serif.
+BEAT 2: magnification reaches the point where hundreds of individual crests resolve.
 CAMERA: macro push-in of 40x on the white line across the full 6 seconds.
 ```
 
@@ -596,8 +571,6 @@ Top-down on a plain white rectangular tile on the table, roughly hand sized.
 BEAT 1: the tile is whole, a single flat surface.
 BEAT 2: a fine grid subdivides it repeatedly, each pass quartering the cells, until the
 surface reads as uniform grey texture rather than countable squares.
-ON-SCREEN: the figure 200,000 in plain dark sans-serif, lower right third, fading in at
-4 seconds and holding to the end.
 CAMERA: top-down framing with a 1.5x macro push-in across the full 6 seconds.
 ```
 
@@ -624,12 +597,9 @@ CAMERA: orbit 30 degrees to the left across the full 6 seconds.
 **S45** — 「셋째, 그래서 크기. 전파를 막으려면 구멍이 센티미터 단위보다 작아야 합니다」
 ```
 Top-down on the white table where a single horizontal measuring scale is laid out, a plain
-steel rule engraved in centimetres from 0 to 10. A dark band masks the scale from its
-right end inward.
+steel rule with no engraved figures. A dark band masks the scale from its right end inward.
 BEAT 1: the full rule is exposed and evenly lit.
-BEAT 2: the dark band sweeps in from the right and covers everything above 1 cm.
-ON-SCREEN: the numeral 3 in plain dark sans-serif, upper left third, fading in at
-1 second and holding to the end.
+BEAT 2: the dark band sweeps in from the right and covers the upper portion of the range.
 CAMERA: top-down lateral dolly 15 centimetres to the left across the full 6 seconds.
 ```
 
@@ -656,8 +626,7 @@ CAMERA: top-down framing with a 1.1x macro push-in across the full 6 seconds.
 Extreme macro on three adjacent perforations in the steel plate, the machined rim burr and
 surface grain of the metal fully resolved.
 BEAT 1: the three holes sit in a row, focus even across all three.
-BEAT 2: focus narrows onto the centre hole, a thin dimension line spanning its diameter
-labelled 1-2 mm in plain white sans-serif, the outer two holes falling soft.
+BEAT 2: focus narrows onto the centre hole, the outer two falling soft.
 CAMERA: rack focus from the outer holes to the centre hole, completing at 4 seconds.
 ```
 
@@ -682,46 +651,22 @@ CAMERA: macro push-in of 1.3x on the plate centre across the full 6 seconds.
 
 **S51** — 「이게 여러분이 매일 들여다보는 그 금속망입니다」  ★그레이드 복귀★
 ```
-Macro of the perforated metal shield inside a microwave oven door, seen through the door
-glass, the hole lattice filling the entire frame, holes roughly 1.5 millimetres across in
-a regular grid, brushed silver steel.
-BEAT 1: the door glass surface catches a faint sheen in front of the lattice.
-BEAT 2: the sheen fades and focus settles fully on the metal, the lattice filling frame
-exactly as in the opening macro.
+The perforated test plate on the white table dissolves into the real perforated shield
+inside a microwave oven door, framed identically, the hole lattice in the same position
+and scale so the two read as one object.
+BEAT 1: the test plate holds, clean laboratory white.
+BEAT 2: the surround resolves into the door glass and plastic trim of a real appliance,
+the grade settling to neutral museum white.
 CAMERA: macro push-in of 1.2x across the full 6 seconds.
 ```
 
 > ★S51은 S03과 «같은 구도»여야 한다.★ 훅에서 본 그 망으로 돌아오는 것이 이 블록의 착지점이다.
 
-> ### 🔴 S51 v1 반려 — ★「A가 B로 녹아든다」를 시키지 않는다★ (2026-09-14 · 실측)
-> v1은 「흰 테이블 위 시험판이 실물 금속망으로 dissolve」였다. 사용자 판정 —
-> **「금속망이 «흰색»이고, 전자레인지 «밖»에 붙어 있는 것처럼 보인다」.**
-> **모델이 틀린 게 아니라 프롬프트가 그렇게 시켰다.** 원인 셋 전부 문장에 있었다.
-> ```
-> ① 흰색      BEAT 1의 `clean laboratory white`
->             ★같은 블록의 S39·S48은 전부 `steel plate`인데 S51만 흰색이라고 썼다★ — 모순
-> ② 밖에 붙음  `the surround resolves into …` = ★시험판이 «상수», 기계가 «주위에 생겨남»★
->             그 구조로 쓰면 판이 먼저 있고 기계가 나중에 둘러싸므로 판이 바깥에 얹힌다
-> ③ 빠진 말    S03에는 `★inside★ a microwave door`가 있는데 S51에는 없었다.
->             「안에 있다」고 말한 적이 없으니 안에 안 들어간다
-> ```
-> ★**v2는 모프를 버렸다**★ — 처음부터 실물 문 «안»의 금속망이고, 「복귀」는 **S03과 구도가
-> 같다는 것**으로 읽힌다. B7이 흰 테이블 시연을 이미 15씬 쌓아 놨으므로 모프로 다시 설명할 필요가 없다.
->
-> ### ★ 일반 규칙으로 승격 — 변형(morph·dissolve) 자체를 지시하지 않는다 ★
-> 모델은 **중간 상태**를 못 만든다. 「A가 B가 된다」를 시키면 A도 B도 아닌 것이 나온다.
-> ```
-> ✗  X dissolves into Y   ·   the surround resolves into Y   ·   X becomes Y
-> ✓  ★처음부터 Y를 찍고★, 연결은 «구도 일치»로 읽힌다        ← S51 v2가 이것
-> ✓  굳이 변화가 필요하면 ★사라지는 쪽을 «얹는다»★ — Y가 상수, X가 페이드아웃
-> ```
-> 이건 §모델은 지시를 조용히 잘못 푼다 ⑤ 「빈 상태를 먼저 만들고 «얹는다»」와 같은 규칙이다.
-
 ---
 
 ## B8 · 3막-2 — 십이 센티미터가 정한 것들 (S52–S60 · 4:50.26–5:39.48 · 씬 5.47초)
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S52 | 4:50.26–4:55.73 | — | 상자 안 정상파, 밝고 어두운 띠 |
 | S53 | 4:55.73–5:01.20 | — | 띠 패턴 탑다운 |
@@ -767,8 +712,6 @@ wave patches visible on the floor beneath it.
 BEAT 1: the plate sits still, one dish riding on it over a dark patch.
 BEAT 2: the plate turns through roughly 180 degrees, carrying the dish across several
 bright and dark patches in turn.
-ON-SCREEN: the figure 1966 in plain white sans-serif, lower left third, fading in at
-2.5 seconds and holding to the end.
 CAMERA: top-down framing with a 1.2x macro push-in across the full 6 seconds.
 ```
 
@@ -787,8 +730,7 @@ CAMERA: static framing with a 1.08x macro push-in across the full 6 seconds.
 Top-down on the white table with the cyan sine wave laid out beside the perforated steel
 plate, one full wave period and the hole spacing in the same frame.
 BEAT 1: both sit still, the scale difference between them plainly readable.
-BEAT 2: the wave period and the hole lattice each pulse once, in turn, a thin dimension
-line spanning the wave period labelled 12 cm in plain dark sans-serif.
+BEAT 2: the wave period and the hole lattice each pulse once, in turn.
 CAMERA: top-down macro push-in of 1.3x across the full 6 seconds.
 ```
 
@@ -818,8 +760,6 @@ A compact countertop microwave oven standing on a domestic kitchen counter, neut
 surround, enamelled body with a viewing door and a mechanical dial, no markings.
 BEAT 1: the unit sits square to camera, the counter running away behind it.
 BEAT 2: the interior lamp behind the door glass warms up, the mesh reading through it.
-ON-SCREEN: the figures 1967 upper left third and $495 lower right third, both plain white
-sans-serif, 1967 fading in at 1.5 seconds and $495 at 3.5 seconds, both holding to the end.
 CAMERA: orbit 35 degrees to the right across the full 6 seconds.
 ```
 
@@ -827,7 +767,7 @@ CAMERA: orbit 35 degrees to the right across the full 6 seconds.
 
 ## B9 · 4막 — 확산과 유산 (S61–S71 · 5:39.48–6:42.83 · 씬 5.76초)
 
-| 씬 | 시간 | 화면값 | 요지 |
+| 씬 | 시간 | 오버레이 | 요지 |
 |---|---|---|---|
 | S61 | 5:39.48–5:45.24 | **`1971` `1%`** | 보급률 곡선이 바닥에서 출발 |
 | S62 | 5:45.24–5:51.00 | **`1986` `25%` / `1997` `90%`** | 곡선이 가파르게 오른다 |
@@ -847,8 +787,6 @@ A line chart rendered as a physical raised ribbon on a neutral white plane, seen
 25 degree angle. The ribbon runs from the left foreground, flat against the base.
 BEAT 1: the flat left section holds, barely lifted off the plane.
 BEAT 2: the ribbon begins to climb, still shallow, extending toward the background.
-ON-SCREEN: the year 1971 set flat on the base plane beneath the ribbon start, and 1% set
-beside the ribbon at that point, both plain dark sans-serif, present from 1 second.
 CAMERA: lateral dolly 30 centimetres to the right along the ribbon across the full 6 seconds.
 ```
 
@@ -857,9 +795,6 @@ CAMERA: lateral dolly 30 centimetres to the right along the ribbon across the fu
 The same raised ribbon chart, the camera now further along its run where the climb steepens.
 BEAT 1: the ribbon rises through the mid range at a moderate slope.
 BEAT 2: the slope steepens sharply and the ribbon reaches near the top of the plane.
-ON-SCREEN: two labelled stops set flat on the base plane beneath the ribbon, 1986 with 25%
-at the mid point and 1997 with 90% near the top, all plain dark sans-serif, the first
-present from 1 second and the second appearing at 3.5 seconds.
 CAMERA: lateral dolly 40 centimetres to the right along the ribbon across the full 6 seconds.
 ```
 
@@ -888,8 +823,6 @@ Top-down on a boxy domestic microwave oven of late 1970s design on a neutral sur
 enamelled steel body, mechanical timer dial, a small viewing door, no markings.
 BEAT 1: the unit sits centred, its proportions notably deeper than modern units.
 BEAT 2: a soft shadow sweeps across the top panel from left to right.
-ON-SCREEN: the figure 1978 in plain dark sans-serif, lower left third, fading in at
-2.5 seconds and holding to the end.
 CAMERA: top-down macro push-in of 1.3x across the full 6 seconds.
 ```
 
@@ -899,8 +832,6 @@ Two physical extruded bars standing side by side on a neutral white plane, seen 
 20 degree angle. Both start flush with the base.
 BEAT 1: the right bar rises to roughly half the frame height and stops.
 BEAT 2: the left bar rises past it to nearly twice that height and stops.
-ON-SCREEN: 394,000 set on the base plane at the foot of the left bar and 210,000 at the
-foot of the right bar, both plain dark sans-serif, each appearing as its bar finishes rising.
 CAMERA: orbit 20 degrees to the right across the full 6 seconds.
 ```
 
@@ -919,8 +850,6 @@ Top-down on a factory assembly line, a long conveyor carrying identical magnetro
 moulded trays, overhead industrial lighting, concrete floor, no people.
 BEAT 1: the line runs, trays advancing steadily through frame.
 BEAT 2: the framing reveals more of the hall, further parallel lines running alongside.
-ON-SCREEN: the figure 1983 in plain white sans-serif, lower left third, fading in at
-2.5 seconds and holding to the end.
 CAMERA: top-down lateral dolly 80 centimetres along the conveyor across the full 6 seconds.
 ```
 
@@ -944,8 +873,6 @@ overcast daylight, no people or vehicles.
 BEAT 1: the container grid fills frame, colours muted and uniform.
 BEAT 2: roughly a third of the containers in frame lift in brightness by a stop while the
 rest sink slightly.
-ON-SCREEN: the fraction 1/3 in plain white sans-serif, lower left third, fading in at
-3 seconds and holding to the end.
 CAMERA: top-down lateral dolly 70 centimetres across the yard over the full 6 seconds.
 ```
 
@@ -964,7 +891,7 @@ CAMERA: rack focus from the cold burner to the steaming plate, completing at 4 s
 
 ★**S01~S03의 재생이다.**★ 새 세팅을 만들지 않는다. **룩이 같아 보여야 수미상관이 성립한다.**
 
-| 씬 | 시간 | 화면값 | 요지 | 대응 |
+| 씬 | 시간 | 오버레이 | 요지 | 대응 |
 |---|---|---|---|---|
 | S72 | 6:42.83–6:47.79 | — | 부엌 선반 위 전자레인지 정면 | **= S01** |
 | S73 | 6:47.79–6:52.75 | — | 금속망 극매크로 + 전파 궤적 | **= S03 + 궤적** |
@@ -1047,7 +974,7 @@ S01 ↔ S72/S75  문 정면      수미상관의 뼈대
 
 → 4클립 × 6초 = **힉스필드 기준 72크레딧**. Flow면 0.
 
-### 9-D. 화면값 목록 — ★프롬프트 안에 들어 있다★ (21씬 · 후반 작업 0)
+### 9-D. 오버레이 목록 (CapCut · 전 19개)
 
 ```
 S04 20          S24 1945.10.08   S26 340 kg      S27 $5,000     S31 1955
@@ -1055,24 +982,8 @@ S36 1           S37 12 cm        S39 2           S41 0.0005 mm  S42 200,000
 S45 3           S48 1-2 mm       S55 1966        S57 12 cm      S60 1967 / $495
 S61 1971 / 1%   S62 1986 / 25% / 1997 / 90%      S65 1978
 S66 394,000 / 210,000             S68 1983       S70 1/3
+S08 ?  (기호 · 중앙 여백에)
 ```
 
-**전부 숫자·영문·기호다** — 한글 번인 금지 규칙은 그대로다.
-
-> ### ✅ 이 목록은 「할 일」이 아니라 「이미 박힌 값」이다 (2026-09-14 개정)
-> 전에는 CapCut에서 얹을 목록이었다. 지금은 **21씬 전부 해당 씬 프롬프트 안에 들어 있다.**
-> ```
-> 방식 A  ★장면 «안» 표면이 값을 진다★ (권장)   S24 도면 표제란 · S26 계기판 눈금 ·
->          S27 가격표 · S37·S41·S48·S57 치수선 · S45 자 눈금
-> 방식 B  ON-SCREEN 줄로 얹는다                  붙일 표면이 없는 씬 —
->          S04·S31·S36·S39·S42·S55·S60·S65·S68·S70 · S61·S62·S66(차트 라벨)
-> ```
-> **A가 기본이다** — 표면에 새겨진 값은 그 씬의 조명·초점·카메라 무브를 «같이» 탄다.
-> ON-SCREEN은 화면에 덧붙은 것이라 무브를 안 따라간다. 붙일 데가 없을 때만 쓴다.
->
-> 🔴 ★**S08은 이 목록에서 빠졌다**★ (2026-09-14 · 사용자 지시). 구 「`?` 오버레이」 자리다 —
-> **기호는 모델이 그리면 모양이 불안정하고, 그 실수를 클립마다 산다.** 물음표 지시를 빼고
-> 중앙 여백도 없앴다(얹을 게 없으면 빈 화면이다). 교착은 **두 상태가 좁혀지다 안 만나는 것**으로
-> 그림이 진다. → ★**기호·글리프는 프롬프트로 시키지 않는다. 숫자는 시킨다**★
-> ★**값이 틀려도 재생성하지 않는다**★ — README §확정 사항 「화면 수치가 틀려도 진행한다」.
-> 사실은 나레이션이 책임진다. 한 편에 한두 개는 틀리게 나온다고 보고 간다.
+**전부 숫자·영문·기호다** — 한글 번인 금지 규칙을 지킨다.
+**모델이 쓴 숫자는 하나도 안 쓴다** — 프롬프트 NEGATIVE에 `no numbers`가 들어 있는 이유다.
